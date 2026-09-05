@@ -1,5 +1,13 @@
 # Análisis de un Circuito RLC en Serie
 
+## Integrantes
+
+- Nombre del integrante 1
+- Nombre del integrante 2
+- Nombre del integrante 3
+
+---
+
 ## Introducción
 
 Un circuito RLC en serie está formado por una resistencia $R$, una inductancia $L$ y un capacitor $C$ conectados en serie.
@@ -204,27 +212,25 @@ $$i(0)=0$$
 
 # 7. Transformada de Laplace
 
-Una vez obtenida la ecuación diferencial, se aplica la transformada de Laplace para convertir la ecuación del dominio del tiempo al dominio de la variable compleja $s$.
+La transformada de Laplace permite convertir una ecuación diferencial del dominio del tiempo en una ecuación algebraica en el dominio de la variable $s$.
 
-La ecuación diferencial es:
+La ecuación diferencial del circuito es:
 
 $$LC\frac{d^2e_o(t)}{dt^2}+RC\frac{de_o(t)}{dt}+e_o(t)=e_i(t)$$
 
-Para la primera derivada se utiliza:
+Para realizar la transformación se utilizan las siguientes relaciones:
 
-$$\mathcal{L}\left\{\frac{de_o(t)}{dt}\right\}=sE_o(s)-e_o(0)$$
+$$L\{e_o(t)\}=E_o(s)$$
 
-Para la segunda derivada:
+$$L\{\frac{de_o(t)}{dt}\}=sE_o(s)-e_o(0)$$
 
-$$\mathcal{L}\left\{\frac{d^2e_o(t)}{dt^2}\right\}=s^2E_o(s)-se_o(0)-e_o'(0)$$
+$$L\{\frac{d^2e_o(t)}{dt^2}\}=s^2E_o(s)-se_o(0)-e_o'(0)$$
 
-Además:
+Para el voltaje de entrada:
 
-$$\mathcal{L}\{e_o(t)\}=E_o(s)$$
+$$L\{e_i(t)\}=E_i(s)$$
 
-y:
-
-$$\mathcal{L}\{e_i(t)\}=E_i(s)$$
+Estas relaciones permiten transformar cada término de la ecuación diferencial al dominio de Laplace.
 
 ---
 
@@ -234,7 +240,7 @@ Aplicando la transformada de Laplace a la ecuación diferencial:
 
 $$LC[s^2E_o(s)-se_o(0)-e_o'(0)]+RC[sE_o(s)-e_o(0)]+E_o(s)=E_i(s)$$
 
-Distribuyendo:
+Distribuyendo los términos:
 
 $$LCs^2E_o(s)-LCse_o(0)-LCe_o'(0)+RCsE_o(s)-RCe_o(0)+E_o(s)=E_i(s)$$
 
@@ -246,13 +252,13 @@ Despejando $E_o(s)$:
 
 $$E_o(s)=\frac{E_i(s)+LCse_o(0)+LCe_o'(0)+RCe_o(0)}{LCs^2+RCs+1}$$
 
-Esta expresión considera condiciones iniciales generales.
+Esta expresión representa el sistema considerando condiciones iniciales generales.
 
 ---
 
 # 9. Condiciones Iniciales Cero
 
-Para obtener la función de transferencia se consideran:
+Para obtener la función de transferencia se consideran condiciones iniciales cero:
 
 $$e_o(0)=0$$
 
@@ -561,20 +567,20 @@ $$\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}$$
 
 # 20. Conclusiones
 
-El análisis del circuito RLC en serie permitió obtener un modelo matemático capaz de representar el comportamiento dinámico del sistema.
+El análisis del circuito RLC en serie permitió obtener un modelo matemático que describe la relación entre el voltaje de entrada $e_i(t)$ y el voltaje de salida $e_o(t)$.
 
-A partir de la Ley de Kirchhoff de Voltajes y de las ecuaciones características de la resistencia, el inductor y el capacitor, se obtuvo una ecuación diferencial de segundo orden:
+A partir de las ecuaciones de la resistencia, el inductor y el capacitor, junto con la Ley de Kirchhoff de Voltajes, se obtuvo una ecuación diferencial de segundo orden:
 
 $$LC\frac{d^2e_o(t)}{dt^2}+RC\frac{de_o(t)}{dt}+e_o(t)=e_i(t)$$
 
-Posteriormente, mediante la transformada de Laplace, esta ecuación diferencial se convirtió en una ecuación algebraica en el dominio de $s$. Para condiciones iniciales cero se obtuvo la función de transferencia:
+Posteriormente, mediante la transformada de Laplace, la ecuación diferencial se convirtió en una ecuación algebraica en el dominio de $s$. Considerando condiciones iniciales cero, se obtuvo la función de transferencia:
 
 $$\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}$$
 
-La función de transferencia permite estudiar el comportamiento del circuito sin necesidad de resolver directamente la ecuación diferencial en el dominio del tiempo.
+La función de transferencia permite analizar el comportamiento del circuito y determinar sus polos y características dinámicas.
 
-Además, mediante los parámetros $\omega_n$, $\alpha$ y $\zeta$, es posible determinar el tipo de respuesta del sistema y conocer si el circuito presenta un comportamiento subamortiguado, críticamente amortiguado o sobreamortiguado.
+Los parámetros $\omega_n$, $\alpha$ y $\zeta$ permiten identificar el tipo de respuesta del sistema y determinar si el circuito es subamortiguado, críticamente amortiguado o sobreamortiguado.
 
-El análisis también muestra la importancia de cada componente. La resistencia controla la disipación de energía, el inductor almacena energía magnética y el capacitor almacena energía eléctrica y proporciona el voltaje de salida.
+El análisis también permite comprender la función de cada componente. La resistencia disipa energía, el inductor almacena energía magnética y el capacitor almacena energía eléctrica y proporciona el voltaje de salida.
 
-En conclusión, el circuito RLC en serie constituye un ejemplo práctico de un sistema dinámico de segundo orden y permite aplicar directamente conceptos fundamentales de sistemas de control, como ecuaciones diferenciales, transformada de Laplace, función de transferencia, polos y análisis de estabilidad.
+En conclusión, el circuito RLC en serie constituye un ejemplo práctico de un sistema dinámico de segundo orden y permite aplicar conceptos fundamentales de sistemas de control como ecuaciones diferenciales, transformada de Laplace, función de transferencia, polos y análisis de estabilidad.
