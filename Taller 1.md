@@ -10,12 +10,12 @@ El objetivo es obtener el modelo matemático del circuito a partir de la Ley de 
 
 Un circuito RLC en serie está compuesto por:
 
-- Una resistencia de valor R.
-- Una inductancia de valor L.
-- Un capacitor de capacitancia C.
-- Una fuente de voltaje V(t).
+- Una resistencia de valor $R$.
+- Una inductancia de valor $L$.
+- Un capacitor de capacitancia $C$.
+- Una fuente de voltaje $V(t)$.
 
-Los tres elementos se encuentran conectados en serie, por lo que la misma corriente i(t) circula por la resistencia, el inductor y el capacitor.
+Los tres elementos se encuentran conectados en serie, por lo que la misma corriente $i(t)$ circula por la resistencia, el inductor y el capacitor.
 
 El circuito RLC representa un sistema eléctrico de segundo orden y puede utilizarse como modelo para el estudio de sistemas dinámicos.
 
@@ -29,29 +29,37 @@ La resistencia disipa energía en forma de calor.
 
 Su voltaje está dado por:
 
-V_R(t) = R · i(t)
+$$
+V_R(t) = R i(t)
+$$
 
 ### Inductor
 
 El inductor almacena energía en forma de campo magnético.
 
-Su voltaje está dado por:
+Su voltaje es:
 
-V_L(t) = L · di(t)/dt
+$$
+V_L(t) = L \frac{di(t)}{dt}
+$$
 
 ### Capacitor
 
 El capacitor almacena energía en forma de campo eléctrico.
 
-Su voltaje está dado por:
+Su voltaje es:
 
-V_C(t) = q(t)/C
+$$
+V_C(t) = \frac{q(t)}{C}
+$$
 
-donde q(t) representa la carga eléctrica.
+donde $q(t)$ representa la carga eléctrica.
 
 Además:
 
-i(t) = dq(t)/dt
+$$
+i(t) = \frac{dq(t)}{dt}
+$$
 
 ---
 
@@ -59,29 +67,63 @@ i(t) = dq(t)/dt
 
 Aplicando la Ley de Kirchhoff de Voltajes:
 
+$$
 V(t) = V_R(t) + V_L(t) + V_C(t)
+$$
 
 Sustituyendo las expresiones de cada elemento:
 
-V(t) = R · i(t) + L · di(t)/dt + q(t)/C
+$$
+V(t)
+=
+R i(t)
++
+L \frac{di(t)}{dt}
++
+\frac{q(t)}{C}
+$$
 
 Como:
 
-i(t) = dq(t)/dt
+$$
+i(t) = \frac{dq(t)}{dt}
+$$
 
 entonces:
 
-di(t)/dt = d²q(t)/dt²
+$$
+\frac{di(t)}{dt}
+=
+\frac{d^2q(t)}{dt^2}
+$$
 
 Por lo tanto:
 
-V(t) = R · dq(t)/dt + L · d²q(t)/dt² + q(t)/C
+$$
+V(t)
+=
+R \frac{dq(t)}{dt}
++
+L \frac{d^2q(t)}{dt^2}
++
+\frac{q(t)}{C}
+$$
 
-Reordenando:
+Finalmente:
 
-L · d²q(t)/dt² + R · dq(t)/dt + q(t)/C = V(t)
+$$
+\boxed{
+L \frac{d^2q(t)}{dt^2}
++
+R \frac{dq(t)}{dt}
++
+\frac{1}{C}q(t)
+=
+V(t)
+}
+$$
 
-Esta es la ecuación diferencial de segundo orden del circuito RLC utilizando la carga q(t) como variable.
+Esta es la ecuación diferencial de segundo orden del circuito RLC.
 
 ---
 
@@ -89,41 +131,73 @@ Esta es la ecuación diferencial de segundo orden del circuito RLC utilizando la
 
 Partiendo de:
 
-L · d²q(t)/dt² + R · dq(t)/dt + q(t)/C = V(t)
+$$
+L \frac{d^2q(t)}{dt^2}
++
+R \frac{dq(t)}{dt}
++
+\frac{1}{C}q(t)
+=
+V(t)
+$$
 
 y utilizando:
 
-i(t) = dq(t)/dt
+$$
+i(t) = \frac{dq(t)}{dt}
+$$
 
-se deriva toda la ecuación:
+derivamos ambos lados:
 
-L · d²i(t)/dt² + R · di(t)/dt + i(t)/C = dV(t)/dt
+$$
+L \frac{d^2i(t)}{dt^2}
++
+R \frac{di(t)}{dt}
++
+\frac{1}{C}i(t)
+=
+\frac{dV(t)}{dt}
+$$
 
 Por lo tanto:
 
-L · d²i(t)/dt² + R · di(t)/dt + i(t)/C = dV(t)/dt
-
-Esta expresión representa el circuito utilizando la corriente i(t) como variable de salida.
+$$
+\boxed{
+L \frac{d^2i(t)}{dt^2}
++
+R \frac{di(t)}{dt}
++
+\frac{1}{C}i(t)
+=
+\frac{dV(t)}{dt}
+}
+$$
 
 ---
 
 ## 5. Condiciones Iniciales
 
-Las condiciones iniciales del circuito pueden expresarse como:
+Las condiciones iniciales son:
 
-q(0) = q₀
+$$
+q(0) = q_0
+$$
 
-i(0) = i₀
+$$
+i(0) = i_0
+$$
 
-El voltaje inicial del capacitor está relacionado con la carga inicial mediante:
+El voltaje inicial del capacitor está relacionado con la carga mediante:
 
-q₀ = C · V_C(0)
+$$
+q_0 = C V_C(0)
+$$
 
 Por lo tanto:
 
-q(0) = C · V_C(0)
-
-Estas condiciones iniciales son necesarias para obtener la solución completa del circuito.
+$$
+q(0) = C V_C(0)
+$$
 
 ---
 
@@ -131,33 +205,78 @@ Estas condiciones iniciales son necesarias para obtener la solución completa de
 
 Partimos de:
 
-L · q''(t) + R · q'(t) + q(t)/C = V(t)
+$$
+Lq''(t) + Rq'(t) + \frac{1}{C}q(t) = V(t)
+$$
 
 Las transformadas necesarias son:
 
-ℒ{q''(t)} = s²Q(s) - s·q(0) - q'(0)
+$$
+\mathcal{L}\{q''(t)\}
+=
+s^2Q(s) - sq(0) - q'(0)
+$$
 
-ℒ{q'(t)} = sQ(s) - q(0)
+$$
+\mathcal{L}\{q'(t)\}
+=
+sQ(s) - q(0)
+$$
 
 Aplicando la transformada de Laplace:
 
-L · [s²Q(s) - s·q(0) - q'(0)]
-+ R · [sQ(s) - q(0)]
-+ Q(s)/C
-= V(s)
+$$
+L
+\left[
+s^2Q(s)-sq(0)-q'(0)
+\right]
++
+R
+\left[
+sQ(s)-q(0)
+\right]
++
+\frac{1}{C}Q(s)
+=
+V(s)
+$$
 
-Agrupando los términos que contienen Q(s):
+Agrupando:
 
-Q(s) · [L·s² + R·s + 1/C]
-
-= V(s) + L·s·q(0) + L·q'(0) + R·q(0)
+$$
+Q(s)
+\left(
+Ls^2+Rs+\frac{1}{C}
+\right)
+=
+V(s)
++
+Lsq(0)
++
+Lq'(0)
++
+Rq(0)
+$$
 
 Por lo tanto:
 
-Q(s) =
-[V(s) + L·s·q(0) + L·q'(0) + R·q(0)]
-/
-[L·s² + R·s + 1/C]
+$$
+\boxed{
+Q(s)
+=
+\frac{
+V(s)
++
+Lsq(0)
++
+Lq'(0)
++
+Rq(0)
+}{
+Ls^2+Rs+\frac{1}{C}
+}
+}
+$$
 
 ---
 
@@ -165,27 +284,54 @@ Q(s) =
 
 Si:
 
-q(0) = 0
+$$
+q(0)=0
+$$
 
 y:
 
-i(0) = q'(0) = 0
+$$
+i(0)=q'(0)=0
+$$
 
 entonces:
 
-Q(s) = V(s) / [L·s² + R·s + 1/C]
+$$
+\boxed{
+Q(s)
+=
+\frac{V(s)}
+{Ls^2+Rs+\frac{1}{C}}
+}
+$$
 
 Como:
 
-I(s) = s·Q(s)
+$$
+I(s)=sQ(s)
+$$
 
 se obtiene:
 
-I(s) = s·V(s) / [L·s² + R·s + 1/C]
+$$
+\boxed{
+I(s)
+=
+\frac{sV(s)}
+{Ls^2+Rs+\frac{1}{C}}
+}
+$$
 
-Por lo tanto, la función de transferencia entre el voltaje de entrada y la corriente es:
+Por lo tanto, la función de transferencia es:
 
-I(s)/V(s) = s / [L·s² + R·s + 1/C]
+$$
+\boxed{
+\frac{I(s)}{V(s)}
+=
+\frac{s}
+{Ls^2+Rs+\frac{1}{C}}
+}
+$$
 
 ---
 
@@ -193,39 +339,66 @@ I(s)/V(s) = s / [L·s² + R·s + 1/C]
 
 Para una entrada escalón:
 
-V(t) = V₀·u(t)
+$$
+V(t)=V_0u(t)
+$$
 
 su transformada de Laplace es:
 
-V(s) = V₀/s
+$$
+V(s)=\frac{V_0}{s}
+$$
 
-Sustituyendo:
+Entonces:
 
-Q(s) =
-V₀ /
-{s · [L·s² + R·s + 1/C]}
+$$
+\boxed{
+Q(s)
+=
+\frac{V_0}
+{
+s
+\left(
+Ls^2+Rs+\frac{1}{C}
+\right)
+}
+}
+$$
 
 Para la corriente:
 
-I(s) = s·Q(s)
+$$
+I(s)=sQ(s)
+$$
 
 por lo tanto:
 
-I(s) = V₀ / [L·s² + R·s + 1/C]
+$$
+\boxed{
+I(s)
+=
+\frac{V_0}
+{Ls^2+Rs+\frac{1}{C}}
+}
+$$
 
 ---
 
 ## 9. Ecuación Característica
 
-La ecuación característica se obtiene a partir del denominador:
+La ecuación característica es:
 
-L·s² + R·s + 1/C = 0
+$$
+Ls^2+Rs+\frac{1}{C}=0
+$$
 
-Dividiendo entre L:
+Dividiendo entre $L$:
 
-s² + (R/L)·s + 1/(L·C) = 0
-
-Esta ecuación permite determinar los polos del sistema.
+$$
+\boxed{
+s^2+\frac{R}{L}s+\frac{1}{LC}=0
+}
+$$
 
 ---
 
@@ -233,41 +406,66 @@ Esta ecuación permite determinar los polos del sistema.
 
 La frecuencia natural no amortiguada es:
 
-ωₙ = 1 / √(L·C)
+$$
+\boxed{
+\omega_n=\frac{1}{\sqrt{LC}}
+}
+$$
 
 El factor de amortiguamiento es:
 
-α = R / (2·L)
+$$
+\boxed{
+\alpha=\frac{R}{2L}
+}
+$$
 
 El factor de amortiguamiento relativo es:
 
-ζ = α / ωₙ
+$$
+\boxed{
+\zeta=\frac{\alpha}{\omega_n}
+}
+$$
 
-Cuando el sistema es subamortiguado, la frecuencia amortiguada es:
+Para un sistema subamortiguado:
 
-ω_d = √(ωₙ² - α²)
+$$
+\boxed{
+\omega_d=\sqrt{\omega_n^2-\alpha^2}
+}
+$$
 
 ---
 
 ## 11. Tipos de Respuesta
 
-El comportamiento del circuito depende de los valores de R, L y C.
-
 ### Sistema Subamortiguado
 
 Se presenta cuando:
 
-α < ωₙ
+$$
+\alpha < \omega_n
+$$
 
 Equivalentemente:
 
-R < 2·√(L/C)
-
-El sistema presenta oscilaciones que disminuyen progresivamente con el tiempo.
+$$
+R < 2\sqrt{\frac{L}{C}}
+$$
 
 La respuesta natural tiene la forma:
 
-qₙ(t) = e^(-αt) · [A·cos(ω_d·t) + B·sin(ω_d·t)]
+$$
+q_n(t)
+=
+e^{-\alpha t}
+\left[
+A\cos(\omega_dt)
++
+B\sin(\omega_dt)
+\right]
+$$
 
 ---
 
@@ -275,17 +473,23 @@ qₙ(t) = e^(-αt) · [A·cos(ω_d·t) + B·sin(ω_d·t)]
 
 Se presenta cuando:
 
-α = ωₙ
+$$
+\alpha = \omega_n
+$$
 
 Equivalentemente:
 
-R = 2·√(L/C)
-
-El sistema regresa al equilibrio sin presentar oscilaciones.
+$$
+R = 2\sqrt{\frac{L}{C}}
+$$
 
 La respuesta natural tiene la forma:
 
-qₙ(t) = (A + B·t)·e^(-αt)
+$$
+q_n(t)
+=
+(A+Bt)e^{-\alpha t}
+$$
 
 ---
 
@@ -293,85 +497,129 @@ qₙ(t) = (A + B·t)·e^(-αt)
 
 Se presenta cuando:
 
-α > ωₙ
+$$
+\alpha > \omega_n
+$$
 
 Equivalentemente:
 
-R > 2·√(L/C)
-
-El sistema no presenta oscilaciones y posee dos polos reales diferentes.
+$$
+R > 2\sqrt{\frac{L}{C}}
+$$
 
 Los polos son:
 
-s₁,₂ = -α ± √(α² - ωₙ²)
+$$
+\boxed{
+s_{1,2}
+=
+-\alpha
+\pm
+\sqrt{\alpha^2-\omega_n^2}
+}
+$$
 
 ---
 
 # 12. Ejemplo Numérico
 
-Consideremos los siguientes valores:
+Consideremos:
 
-R = 10 Ω
+$$
+R=10\ \Omega
+$$
 
-L = 0.5 H
+$$
+L=0.5\ H
+$$
 
-C = 0.01 F
+$$
+C=0.01\ F
+$$
 
-y una fuente escalón:
+y una fuente:
 
-V(t) = 12·u(t)
+$$
+V(t)=12u(t)
+$$
 
 La ecuación diferencial es:
 
-0.5·q''(t) + 10·q'(t) + 100·q(t) = 12
+$$
+0.5q''(t)
++
+10q'(t)
++
+100q(t)
+=
+12
+$$
 
-Dividiendo toda la ecuación entre 0.5:
+Dividiendo entre $0.5$:
 
-q''(t) + 20·q'(t) + 200·q(t) = 24
+$$
+\boxed{
+q''(t)+20q'(t)+200q(t)=24
+}
+$$
 
 ---
 
 ## 13. Parámetros del Ejemplo
 
-El factor de amortiguamiento es:
+Factor de amortiguamiento:
 
-α = R / (2·L)
+$$
+\alpha
+=
+\frac{10}{2(0.5)}
+=
+10\ \text{s}^{-1}
+$$
 
-α = 10 / [2·(0.5)]
+Frecuencia natural:
 
-α = 10 s⁻¹
-
-La frecuencia natural es:
-
-ωₙ = 1 / √(L·C)
-
-ωₙ = 1 / √[(0.5)(0.01)]
-
-ωₙ ≈ 14.142 rad/s
+$$
+\omega_n
+=
+\frac{1}{\sqrt{(0.5)(0.01)}}
+\approx
+14.142\ \text{rad/s}
+$$
 
 Como:
 
-10 < 14.142
+$$
+\alpha < \omega_n
+$$
 
 el sistema es:
 
-SUBAMORTIGUADO
+$$
+\boxed{
+\text{SUBAMORTIGUADO}
+}
+$$
 
 La frecuencia amortiguada es:
 
-ω_d = √(ωₙ² - α²)
-
-ω_d = √(14.142² - 10²)
-
-ω_d = 10 rad/s
+$$
+\omega_d
+=
+\sqrt{14.142^2-10^2}
+=
+10\ \text{rad/s}
+$$
 
 El factor de amortiguamiento relativo es:
 
-ζ = α / ωₙ
-
-ζ = 10 / 14.142
-
-ζ ≈ 0.707
+$$
+\zeta
+=
+\frac{10}{14.142}
+\approx
+0.707
+$$
 
 ---
 
@@ -379,29 +627,59 @@ El factor de amortiguamiento relativo es:
 
 Para condiciones iniciales cero:
 
-Q(s) =
-(12/s) /
-(0.5·s² + 10·s + 100)
+$$
+Q(s)
+=
+\frac{12/s}
+{0.5s^2+10s+100}
+$$
 
 Simplificando:
 
-Q(s) = 24 / [s·(s² + 20·s + 200)]
+$$
+\boxed{
+Q(s)
+=
+\frac{24}
+{s(s^2+20s+200)}
+}
+$$
 
 Para la corriente:
 
-I(s) = s·Q(s)
+$$
+I(s)=sQ(s)
+$$
 
 por lo tanto:
 
-I(s) = 24 / (s² + 20·s + 200)
+$$
+\boxed{
+I(s)
+=
+\frac{24}
+{s^2+20s+200}
+}
+$$
 
 Completando el cuadrado:
 
-s² + 20·s + 200 = (s + 10)² + 100
+$$
+s^2+20s+200
+=
+(s+10)^2+100
+$$
 
 Por lo tanto:
 
-I(s) = 24 / [(s + 10)² + 10²]
+$$
+\boxed{
+I(s)
+=
+\frac{24}
+{(s+10)^2+10^2}
+}
+$$
 
 ---
 
@@ -409,19 +687,23 @@ I(s) = 24 / [(s + 10)² + 10²]
 
 La ecuación característica es:
 
-s² + 20·s + 200 = 0
+$$
+s^2+20s+200=0
+$$
 
-Aplicando la fórmula cuadrática:
+Las raíces son:
 
-s = [-20 ± √(20² - 4·200)] / 2
+$$
+\boxed{
+s_1=-10+10j
+}
+$$
 
-s = [-20 ± √(-400)] / 2
-
-Por lo tanto:
-
-s₁ = -10 + 10j
-
-s₂ = -10 - 10j
+$$
+\boxed{
+s_2=-10-10j
+}
+$$
 
 Los polos son complejos conjugados, confirmando que el sistema es subamortiguado.
 
@@ -429,57 +711,102 @@ Los polos son complejos conjugados, confirmando que el sistema es subamortiguado
 
 La carga final es:
 
-q(∞) = C·V₀
+$$
+q(\infty)=CV_0
+$$
 
-q(∞) = (0.01)(12)
+Entonces:
 
-q(∞) = 0.12 C
+$$
+q(\infty)
+=
+(0.01)(12)
+=
+0.12\ C
+$$
 
-La solución de la carga es:
+La solución temporal de la carga es:
 
-q(t) =
+$$
+\boxed{
+q(t)
+=
 0.12
-- 0.12·e^(-10t)·cos(10t)
-- 0.12·e^(-10t)·sin(10t)
+-
+0.12e^{-10t}\cos(10t)
+-
+0.12e^{-10t}\sin(10t)
+}
+$$
 
 También puede escribirse como:
 
-q(t) =
-0.12·[1 - e^(-10t)·cos(10t) - e^(-10t)·sin(10t)]
+$$
+\boxed{
+q(t)
+=
+0.12
+\left[
+1
+-
+e^{-10t}\cos(10t)
+-
+e^{-10t}\sin(10t)
+\right]
+}
+$$
 
 ### Corriente
 
 La corriente se obtiene mediante:
 
-i(t) = dq(t)/dt
-
-Derivando:
-
-i(t) = 2.4·e^(-10t)·sin(10t)
+$$
+i(t)=\frac{dq(t)}{dt}
+$$
 
 Por lo tanto:
 
-i(t) = 2.4·e^(-10t)·sin(10t) A
+$$
+\boxed{
+i(t)
+=
+2.4e^{-10t}\sin(10t)\ A
+}
+$$
 
 La corriente presenta una respuesta oscilatoria amortiguada y tiende a cero cuando:
 
-t → ∞
+$$
+t\rightarrow\infty
+$$
 
 ---
 
 ## 16. Interpretación Física
 
-Para una entrada escalón de 12 V, el capacitor termina almacenando una carga de:
+Para una entrada escalón de $12\ V$, el capacitor termina almacenando:
 
-q(∞) = 0.12 C
+$$
+q(\infty)=0.12\ C
+$$
 
 El voltaje final del capacitor es:
 
-V_C(∞) = q(∞) / C
+$$
+V_C(\infty)
+=
+\frac{q(\infty)}{C}
+$$
 
-V_C(∞) = 0.12 / 0.01
+Por lo tanto:
 
-V_C(∞) = 12 V
+$$
+V_C(\infty)
+=
+\frac{0.12}{0.01}
+=
+12\ V
+$$
 
 La corriente tiende a cero debido a que, en estado estacionario de corriente continua, el capacitor se comporta como un circuito abierto.
 
@@ -487,16 +814,16 @@ El sistema es subamortiguado porque la energía almacenada en el inductor y el c
 
 ---
 
-# 17. Programa
+# 17. Programa en Python
 
 El repositorio contiene un programa desarrollado en Python que permite realizar automáticamente el análisis del circuito RLC.
 
-El usuario puede introducir:
+El programa permite introducir:
 
-- Resistencia R.
-- Inductancia L.
-- Capacitancia C.
-- Voltaje de la fuente V₀.
+- Resistencia $R$.
+- Inductancia $L$.
+- Capacitancia $C$.
+- Voltaje de la fuente $V_0$.
 - Voltaje inicial del capacitor.
 - Corriente inicial.
 - Tiempo de simulación.
@@ -511,10 +838,10 @@ El programa calcula:
 6. El factor de amortiguamiento relativo.
 7. El tipo de respuesta.
 8. La transformada de Laplace.
-9. Q(s).
-10. I(s).
-11. La solución temporal q(t).
-12. La corriente i(t).
+9. $Q(s)$.
+10. $I(s)$.
+11. La solución temporal $q(t)$.
+12. La corriente $i(t)$.
 13. Las gráficas del sistema.
 
 ---
