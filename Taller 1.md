@@ -14,6 +14,8 @@ Las variables utilizadas son:
 
 - $e_i(t)$: voltaje de entrada.
 - $e_o(t)$: voltaje de salida.
+- $v_R(t)$: voltaje en la resistencia.
+- $v_L(t)$: voltaje en el inductor.
 - $E_i(s)$: transformada de Laplace del voltaje de entrada.
 - $E_o(s)$: transformada de Laplace del voltaje de salida.
 - $i(t)$: corriente del circuito.
@@ -54,7 +56,7 @@ La resistencia es el elemento que se opone al paso de la corriente eléctrica y 
 
 La relación entre el voltaje y la corriente en una resistencia está dada por la Ley de Ohm:
 
-$$e_R(t)=Ri(t)$$
+$$v_R(t)=Ri(t)$$
 
 La resistencia influye directamente en el amortiguamiento del sistema.
 
@@ -68,7 +70,7 @@ El inductor almacena energía en forma de campo magnético.
 
 El voltaje del inductor depende de la variación de la corriente con respecto al tiempo:
 
-$$e_L(t)=L\frac{di(t)}{dt}$$
+$$v_L(t)=L\frac{di(t)}{dt}$$
 
 donde $L$ representa la inductancia y se mide en henrios.
 
@@ -80,7 +82,7 @@ El inductor introduce una relación entre el voltaje y la variación de la corri
 
 El capacitor almacena energía en forma de campo eléctrico.
 
-El voltaje del capacitor está relacionado con la carga eléctrica mediante:
+El voltaje del capacitor corresponde al voltaje de salida y está relacionado con la carga eléctrica mediante:
 
 $$e_o(t)=\frac{q(t)}{C}$$
 
@@ -102,7 +104,7 @@ Por lo tanto:
 
 $$i(t)=C\frac{de_o(t)}{dt}$$
 
-Esta relación será utilizada posteriormente para expresar la ecuación del circuito únicamente en función del voltaje de entrada y del voltaje de salida.
+Esta relación será utilizada posteriormente para expresar la ecuación del circuito en función del voltaje de entrada y del voltaje de salida.
 
 ---
 
@@ -114,15 +116,15 @@ Esta ley establece que la suma de las caídas de voltaje en una malla es igual a
 
 Para el circuito RLC:
 
-$$e_i(t)=e_R(t)+e_L(t)+e_o(t)$$
+$$e_i(t)=v_R(t)+v_L(t)+e_o(t)$$
+
+Donde $v_R(t)$ representa el voltaje en la resistencia, $v_L(t)$ representa el voltaje en el inductor y $e_o(t)$ representa el voltaje de salida, tomado en el capacitor.
 
 Sustituyendo las expresiones correspondientes a cada componente:
 
 $$e_i(t)=Ri(t)+L\frac{di(t)}{dt}+e_o(t)$$
 
 Esta expresión representa la suma de los voltajes presentes en la resistencia, el inductor y el capacitor.
-
-Sin embargo, todavía aparece la corriente $i(t)$.
 
 Para obtener una ecuación únicamente en función de la entrada y la salida, se utiliza la relación obtenida para el capacitor.
 
@@ -342,7 +344,7 @@ Los polos permiten determinar el comportamiento dinámico del circuito.
 
 La frecuencia natural no amortiguada es:
 
-$$\boxed{\omega_n=\frac{1}{\sqrt{LC}}}$$
+$$\boxed{\omega_n=\frac{1}{\sqrt{LC}}$$
 
 El factor de amortiguamiento es:
 
@@ -358,7 +360,7 @@ $$\boxed{\zeta=\frac{R}{2}\sqrt{\frac{C}{L}}}$$
 
 Para un sistema subamortiguado, la frecuencia amortiguada es:
 
-$$\boxed{\omega_d=\sqrt{\omega_n^2-\alpha^2}}$$
+$$\boxed{\omega_d=\sqrt{\omega_n^2-\alpha^2}$$
 
 ---
 
@@ -554,7 +556,7 @@ $$\boxed{LCs^2+RCs+1=0}$$
 
 La frecuencia natural es:
 
-$$\boxed{\omega_n=\frac{1}{\sqrt{LC}}}$$
+$$\boxed{\omega_n=\frac{1}{\sqrt{LC}}$$
 
 El factor de amortiguamiento es:
 
@@ -576,16 +578,20 @@ $$\boxed{\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}}$$
 
 # 20. Conclusiones
 
-El análisis del circuito RLC en serie permitió obtener un modelo matemático completo a partir de las leyes fundamentales de los circuitos eléctricos.
+El análisis del circuito RLC en serie permitió establecer un modelo matemático que describe la relación entre el voltaje de entrada $e_i(t)$ y el voltaje de salida $e_o(t)$.
 
-Mediante la Ley de Kirchhoff de Voltajes y las relaciones características de la resistencia, el inductor y el capacitor, se obtuvo una ecuación diferencial lineal de segundo orden que relaciona directamente el voltaje de entrada $e_i(t)$ con el voltaje de salida $e_o(t)$.
+A partir de las ecuaciones de la resistencia, el inductor y el capacitor, junto con la Ley de Kirchhoff de Voltajes, se obtuvo una ecuación diferencial lineal de segundo orden:
 
-La aplicación de la transformada de Laplace permitió transformar la ecuación diferencial del dominio del tiempo al dominio de $s$, facilitando la obtención de la función de transferencia:
+$$\boxed{LC\frac{d^2e_o(t)}{dt^2}+RC\frac{de_o(t)}{dt}+e_o(t)=e_i(t)}$$
+
+La aplicación de la transformada de Laplace permitió convertir esta ecuación diferencial en una expresión algebraica en el dominio de $s$. Considerando condiciones iniciales cero, se obtuvo la función de transferencia:
 
 $$\boxed{\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}}$$
 
-A partir de esta función de transferencia se pueden determinar los polos del sistema y analizar su comportamiento dinámico. Los parámetros $\omega_n$, $\alpha$ y $\zeta$ permiten establecer si el circuito presenta una respuesta subamortiguada, críticamente amortiguada o sobreamortiguada.
+A partir de esta función de transferencia es posible determinar los polos del sistema y analizar su comportamiento dinámico.
 
-También se observa que la resistencia tiene un papel fundamental en la respuesta del sistema, ya que determina la cantidad de amortiguamiento presente. Por otro lado, el inductor y el capacitor son responsables del almacenamiento e intercambio de energía que caracteriza la dinámica del circuito.
+Los parámetros $\omega_n$, $\alpha$ y $\zeta$ permiten identificar las características de la respuesta y determinar si el circuito es subamortiguado, críticamente amortiguado o sobreamortiguado.
 
-Finalmente, el análisis del circuito RLC demuestra cómo un sistema eléctrico puede ser representado mediante las herramientas matemáticas utilizadas en sistemas de control. La ecuación diferencial, la transformada de Laplace, la función de transferencia y el análisis de polos permiten estudiar de manera sistemática la respuesta del circuito ante diferentes señales de entrada.
+También se puede observar que cada elemento del circuito tiene una función específica dentro del comportamiento dinámico. La resistencia disipa energía, el inductor almacena energía magnética y el capacitor almacena energía eléctrica.
+
+En conclusión, el circuito RLC en serie constituye un ejemplo práctico de un sistema de segundo orden y permite relacionar los conceptos de circuitos eléctricos con las herramientas fundamentales de los sistemas de control, como las ecuaciones diferenciales, la transformada de Laplace, la función de transferencia y el análisis de polos.
