@@ -1,6 +1,6 @@
 # Sistemas de Control - Circuito RLC en Serie
 
-Este documento presenta el análisis de un circuito RLC en serie mediante ecuaciones diferenciales y la transformada de Laplace.
+Este proyecto presenta el análisis matemático de un circuito RLC en serie utilizando ecuaciones diferenciales y la transformada de Laplace.
 
 El objetivo es obtener el modelo matemático del circuito a partir de la Ley de Kirchhoff, analizar sus condiciones iniciales, determinar el tipo de respuesta del sistema y obtener su solución temporal.
 
@@ -17,7 +17,7 @@ Un circuito RLC en serie está compuesto por:
 
 Los tres elementos se encuentran conectados en serie, por lo que la misma corriente $i(t)$ circula por la resistencia, el inductor y el capacitor.
 
-El circuito RLC representa un sistema eléctrico de segundo orden y puede ser utilizado como modelo para el estudio de sistemas dinámicos.
+El circuito RLC representa un sistema eléctrico de segundo orden y puede utilizarse como modelo para el estudio de sistemas dinámicos.
 
 ---
 
@@ -37,7 +37,7 @@ $$
 
 El inductor almacena energía en forma de campo magnético.
 
-Su voltaje es:
+Su voltaje está dado por:
 
 $$
 V_L(t) = L \frac{di(t)}{dt}
@@ -47,7 +47,7 @@ $$
 
 El capacitor almacena energía en forma de campo eléctrico.
 
-Su voltaje es:
+Su voltaje está dado por:
 
 $$
 V_C(t) = \frac{q(t)}{C}
@@ -65,7 +65,7 @@ $$
 
 ## 3. Ley de Kirchhoff
 
-Aplicando la Ley de Kirchhoff de Voltajes al circuito:
+Aplicando la Ley de Kirchhoff de Voltajes:
 
 $$
 V(t) = V_R(t) + V_L(t) + V_C(t)
@@ -74,8 +74,7 @@ $$
 Sustituyendo las expresiones de cada elemento:
 
 $$
-V(t)
-=
+V(t) =
 R i(t)
 +
 L \frac{di(t)}{dt}
@@ -89,11 +88,18 @@ $$
 i(t) = \frac{dq(t)}{dt}
 $$
 
-se obtiene:
+entonces:
 
 $$
-V(t)
+\frac{di(t)}{dt}
 =
+\frac{d^2q(t)}{dt^2}
+$$
+
+Por lo tanto:
+
+$$
+V(t) =
 R \frac{dq(t)}{dt}
 +
 L \frac{d^2q(t)}{dt^2}
@@ -104,7 +110,6 @@ $$
 Reordenando:
 
 $$
-\boxed{
 L \frac{d^2q(t)}{dt^2}
 +
 R \frac{dq(t)}{dt}
@@ -112,10 +117,9 @@ R \frac{dq(t)}{dt}
 \frac{1}{C}q(t)
 =
 V(t)
-}
 $$
 
-Esta es la ecuación diferencial de segundo orden del circuito utilizando la carga $q(t)$ como variable.
+Esta es la ecuación diferencial de segundo orden del circuito RLC utilizando la carga $q(t)$ como variable.
 
 ---
 
@@ -133,13 +137,13 @@ R \frac{dq(t)}{dt}
 V(t)
 $$
 
-y utilizando:
+Utilizando:
 
 $$
 i(t) = \frac{dq(t)}{dt}
 $$
 
-derivamos ambos lados:
+y derivando ambos lados:
 
 $$
 L \frac{d^2i(t)}{dt^2}
@@ -154,7 +158,6 @@ $$
 Por lo tanto:
 
 $$
-\boxed{
 L \frac{d^2i(t)}{dt^2}
 +
 R \frac{di(t)}{dt}
@@ -162,7 +165,6 @@ R \frac{di(t)}{dt}
 \frac{1}{C}i(t)
 =
 \frac{dV(t)}{dt}
-}
 $$
 
 Esta expresión representa el circuito utilizando la corriente $i(t)$ como variable de salida.
@@ -171,7 +173,7 @@ Esta expresión representa el circuito utilizando la corriente $i(t)$ como varia
 
 ## 5. Condiciones Iniciales
 
-Las condiciones iniciales del circuito pueden expresarse mediante:
+Las condiciones iniciales del circuito pueden expresarse como:
 
 $$
 q(0) = q_0
@@ -201,18 +203,18 @@ Estas condiciones iniciales son necesarias para obtener la solución completa de
 
 ## 6. Transformada de Laplace
 
-Partimos de la ecuación diferencial:
+Partimos de:
 
 $$
 Lq''(t) + Rq'(t) + \frac{1}{C}q(t) = V(t)
 $$
 
-Aplicando la transformada de Laplace:
+Las transformadas necesarias son:
 
 $$
 \mathcal{L}\{q''(t)\}
 =
-s^2 Q(s) - s q(0) - q'(0)
+s^2Q(s) - sq(0) - q'(0)
 $$
 
 y:
@@ -220,20 +222,20 @@ y:
 $$
 \mathcal{L}\{q'(t)\}
 =
-s Q(s) - q(0)
+sQ(s) - q(0)
 $$
 
-Por lo tanto:
+Aplicando la transformada de Laplace:
 
 $$
 L
 \left[
-s^2 Q(s) - s q(0) - q'(0)
+s^2Q(s) - sq(0) - q'(0)
 \right]
 +
 R
 \left[
-s Q(s) - q(0)
+sQ(s) - q(0)
 \right]
 +
 \frac{1}{C}Q(s)
@@ -241,7 +243,7 @@ s Q(s) - q(0)
 V(s)
 $$
 
-Agrupando los términos que contienen $Q(s)$:
+Agrupando los términos:
 
 $$
 Q(s)
@@ -258,10 +260,9 @@ Lq'(0)
 Rq(0)
 $$
 
-Finalmente:
+Por lo tanto:
 
 $$
-\boxed{
 Q(s)
 =
 \frac{
@@ -274,7 +275,6 @@ Lq'(0)
 Rq(0)
 }{
 Ls^2 + Rs + \frac{1}{C}
-}
 }
 $$
 
@@ -294,15 +294,13 @@ $$
 i(0) = q'(0) = 0
 $$
 
-la ecuación anterior se simplifica:
+entonces:
 
 $$
-\boxed{
 Q(s)
 =
 \frac{V(s)}
 {Ls^2 + Rs + \frac{1}{C}}
-}
 $$
 
 Como:
@@ -314,23 +312,19 @@ $$
 se obtiene:
 
 $$
-\boxed{
 I(s)
 =
 \frac{sV(s)}
 {Ls^2 + Rs + \frac{1}{C}}
-}
 $$
 
-Por lo tanto, la función de transferencia entre la fuente de voltaje y la corriente es:
+Por lo tanto, la función de transferencia entre el voltaje de entrada y la corriente es:
 
 $$
-\boxed{
 \frac{I(s)}{V(s)}
 =
 \frac{s}
 {Ls^2 + Rs + \frac{1}{C}}
-}
 $$
 
 ---
@@ -340,10 +334,10 @@ $$
 Para una entrada escalón:
 
 $$
-V(t) = V_0 u(t)
+V(t) = V_0u(t)
 $$
 
-la transformada de Laplace es:
+su transformada de Laplace es:
 
 $$
 V(s) = \frac{V_0}{s}
@@ -361,42 +355,26 @@ Ls^2 + Rs + \frac{1}{C}
 \right)}
 $$
 
-Por lo tanto:
-
-$$
-\boxed{
-Q(s)
-=
-\frac{V_0}
-{s
-\left(
-Ls^2 + Rs + \frac{1}{C}
-\right)}
-}
-$$
-
 Para la corriente:
 
 $$
 I(s) = sQ(s)
 $$
 
-por lo que:
+por lo tanto:
 
 $$
-\boxed{
 I(s)
 =
 \frac{V_0}
 {Ls^2 + Rs + \frac{1}{C}}
-}
 $$
 
 ---
 
 ## 9. Ecuación Característica
 
-La ecuación característica del sistema se obtiene a partir del denominador:
+La ecuación característica se obtiene a partir del denominador:
 
 $$
 Ls^2 + Rs + \frac{1}{C} = 0
@@ -417,34 +395,26 @@ Esta ecuación permite determinar los polos del sistema.
 La frecuencia natural no amortiguada es:
 
 $$
-\boxed{
 \omega_n = \frac{1}{\sqrt{LC}}
-}
 $$
 
 El factor de amortiguamiento es:
 
 $$
-\boxed{
 \alpha = \frac{R}{2L}
-}
 $$
 
 El factor de amortiguamiento relativo es:
 
 $$
-\boxed{
 \zeta = \frac{\alpha}{\omega_n}
-}
 $$
 
 Cuando el sistema es subamortiguado, la frecuencia amortiguada es:
 
 $$
-\boxed{
 \omega_d =
 \sqrt{\omega_n^2 - \alpha^2}
-}
 $$
 
 ---
@@ -476,13 +446,11 @@ q_n(t)
 =
 e^{-\alpha t}
 \left[
-A\cos(\omega_d t)
+A\cos(\omega_dt)
 +
-B\sin(\omega_d t)
+B\sin(\omega_dt)
 \right]
 $$
-
----
 
 ### Sistema Críticamente Amortiguado
 
@@ -500,15 +468,13 @@ $$
 
 El sistema regresa al equilibrio sin presentar oscilaciones.
 
-La respuesta tiene la forma:
+La respuesta natural tiene la forma:
 
 $$
 q_n(t)
 =
 (A + Bt)e^{-\alpha t}
 $$
-
----
 
 ### Sistema Sobreamortiguado
 
@@ -538,7 +504,7 @@ $$
 
 ---
 
-## 12. Ejemplo Numérico
+# 12. Ejemplo Numérico
 
 Consideremos los siguientes valores:
 
@@ -572,7 +538,7 @@ $$
 12
 $$
 
-Dividiendo entre $0.5$:
+Dividiendo toda la ecuación entre $0.5$:
 
 $$
 q''(t)
@@ -593,12 +559,28 @@ El factor de amortiguamiento es:
 $$
 \alpha
 =
+\frac{R}{2L}
+$$
+
+Sustituyendo:
+
+$$
+\alpha
+=
 \frac{10}{2(0.5)}
 =
 10\ \text{s}^{-1}
 $$
 
 La frecuencia natural es:
+
+$$
+\omega_n
+=
+\frac{1}{\sqrt{LC}}
+$$
+
+Sustituyendo:
 
 $$
 \omega_n
@@ -611,16 +593,20 @@ $$
 Como:
 
 $$
-\alpha < \omega_n
+10 < 14.142
 $$
 
-el sistema es:
-
-$$
-\boxed{\text{SUBAMORTIGUADO}}
-$$
+el sistema es subamortiguado.
 
 La frecuencia amortiguada es:
+
+$$
+\omega_d
+=
+\sqrt{\omega_n^2 - \alpha^2}
+$$
+
+Entonces:
 
 $$
 \omega_d
@@ -628,7 +614,7 @@ $$
 \sqrt{14.142^2 - 10^2}
 $$
 
-por lo tanto:
+Por lo tanto:
 
 $$
 \omega_d = 10\ \text{rad/s}
@@ -639,7 +625,13 @@ El factor de amortiguamiento relativo es:
 $$
 \zeta
 =
-\frac{10}{14.142}
+\frac{\alpha}{\omega_n}
+$$
+
+por lo tanto:
+
+$$
+\zeta
 \approx
 0.707
 $$
@@ -657,15 +649,13 @@ Q(s)
 {0.5s^2 + 10s + 100}
 $$
 
-Simplificando:
+Multiplicando numerador y denominador por $2$:
 
 $$
-\boxed{
 Q(s)
 =
 \frac{24}
 {s(s^2 + 20s + 200)}
-}
 $$
 
 Para la corriente:
@@ -677,12 +667,10 @@ $$
 por lo tanto:
 
 $$
-\boxed{
 I(s)
 =
 \frac{24}
 {s^2 + 20s + 200}
-}
 $$
 
 Completando el cuadrado:
@@ -690,7 +678,7 @@ Completando el cuadrado:
 $$
 s^2 + 20s + 200
 =
-(s+10)^2 + 100
+(s + 10)^2 + 100
 $$
 
 Por lo tanto:
@@ -699,7 +687,7 @@ $$
 I(s)
 =
 \frac{24}
-{(s+10)^2 + 10^2}
+{(s + 10)^2 + 10^2}
 $$
 
 ---
@@ -712,25 +700,41 @@ $$
 s^2 + 20s + 200 = 0
 $$
 
-Sus raíces son:
+Aplicando la fórmula cuadrática:
+
+$$
+s
+=
+\frac{-20 \pm \sqrt{20^2 - 4(200)}}{2}
+$$
+
+$$
+s
+=
+\frac{-20 \pm \sqrt{-400}}{2}
+$$
+
+Por lo tanto:
 
 $$
 s_1 = -10 + 10j
 $$
 
-y:
-
 $$
 s_2 = -10 - 10j
 $$
 
-La carga final del capacitor es:
+Los polos son complejos conjugados, confirmando que el sistema es subamortiguado.
+
+### Carga del capacitor
+
+La carga final es:
 
 $$
 q(\infty) = CV_0
 $$
 
-por lo tanto:
+Sustituyendo:
 
 $$
 q(\infty)
@@ -740,22 +744,9 @@ q(\infty)
 0.12\ C
 $$
 
-Para condiciones iniciales cero:
-
-$$
-q(0) = 0
-$$
-
-y:
-
-$$
-i(0) = 0
-$$
-
 La solución de la carga es:
 
 $$
-\boxed{
 q(t)
 =
 0.12
@@ -763,8 +754,24 @@ q(t)
 0.12e^{-10t}\cos(10t)
 -
 0.12e^{-10t}\sin(10t)
-}
 $$
+
+También puede escribirse como:
+
+$$
+q(t)
+=
+0.12
+\left[
+1
+-
+e^{-10t}\cos(10t)
+-
+e^{-10t}\sin(10t)
+\right]
+$$
+
+### Corriente
 
 La corriente se obtiene mediante:
 
@@ -772,17 +779,27 @@ $$
 i(t) = \frac{dq(t)}{dt}
 $$
 
-Derivando la expresión anterior:
+Derivando:
 
 $$
-\boxed{
 i(t)
 =
 2.4e^{-10t}\sin(10t)
-}
 $$
 
-Por lo tanto, la corriente presenta una respuesta oscilatoria amortiguada y tiende a cero cuando $t \rightarrow \infty$.
+Por lo tanto:
+
+$$
+i(t)
+=
+2.4e^{-10t}\sin(10t)\ A
+$$
+
+La corriente presenta una respuesta oscilatoria amortiguada y tiende a cero cuando:
+
+$$
+t \rightarrow \infty
+$$
 
 ---
 
@@ -794,23 +811,31 @@ $$
 q(\infty) = 0.12\ C
 $$
 
-Su voltaje final es:
+El voltaje final del capacitor es:
 
 $$
 V_C(\infty)
 =
 \frac{q(\infty)}{C}
+$$
+
+Por lo tanto:
+
+$$
+V_C(\infty)
+=
+\frac{0.12}{0.01}
 =
 12\ V
 $$
 
 La corriente tiende a cero debido a que, en estado estacionario de corriente continua, el capacitor se comporta como un circuito abierto.
 
-El sistema es subamortiguado porque la energía almacenada inicialmente en el inductor y el capacitor produce oscilaciones que son disipadas progresivamente por la resistencia.
+El sistema es subamortiguado porque la energía almacenada en el inductor y el capacitor produce oscilaciones que son disipadas progresivamente por la resistencia.
 
 ---
 
-## 17. Programa
+# 17. Programa
 
 El repositorio contiene un programa desarrollado en Python que permite realizar automáticamente el análisis del circuito RLC.
 
@@ -842,7 +867,7 @@ El programa calcula:
 
 ---
 
-## 18. Ejecución
+# 18. Ejecución
 
 Primero instalar las dependencias:
 
