@@ -18,7 +18,13 @@ A continuación se muestra el circuito RLC en serie utilizado para realizar el a
 
 Un circuito RLC en serie está compuesto por una resistencia $R$, una inductancia $L$ y un capacitor $C$ conectados en serie.
 
-El voltaje de entrada del sistema se representa mediante $e_i(t)$ y el voltaje de salida $e_o(t)$ corresponde al voltaje en el capacitor.
+El voltaje de entrada del sistema se representa mediante $e_i(t)$ y el voltaje de salida $e_o(t)$ corresponde al voltaje medido en el capacitor.
+
+Para facilitar el análisis, se utilizará $e_o(t)$ para representar el voltaje del capacitor. Por lo tanto:
+
+$$V_C(t)=e_o(t)$$
+
+De esta manera, todas las ecuaciones posteriores utilizarán $e_o(t)$ como voltaje de salida.
 
 Debido a que los elementos están conectados en serie, la misma corriente $i(t)$ circula por la resistencia, el inductor y el capacitor.
 
@@ -58,7 +64,13 @@ Esta ecuación relaciona el voltaje del inductor con la variación de la corrien
 
 El capacitor almacena energía en forma de campo eléctrico.
 
-El voltaje del capacitor corresponde al voltaje de salida:
+Normalmente, el voltaje del capacitor se representa mediante $V_C(t)$.
+
+Para este análisis se define el voltaje de salida como $e_o(t)$, por lo que:
+
+$$V_C(t)=e_o(t)$$
+
+La ecuación del capacitor es:
 
 $$e_o(t)=\frac{q(t)}{C}$$
 
@@ -124,7 +136,7 @@ Esta ecuación diferencial describe la relación entre el voltaje de entrada y e
 
 Para aplicar correctamente la transformada de Laplace se deben considerar las condiciones iniciales del sistema.
 
-El voltaje inicial del capacitor se representa mediante:
+El voltaje inicial del capacitor, que corresponde al voltaje de salida, se representa mediante:
 
 $$e_o(0)$$
 
@@ -180,7 +192,7 @@ $$e_o(0)=0$$
 
 $$e_o'(0)=0$$
 
-la expresión se simplifica a:
+La expresión se simplifica a:
 
 $$LCs^2E_o(s)+RCsE_o(s)+E_o(s)=E_i(s)$$
 
@@ -212,7 +224,9 @@ Esta expresión representa matemáticamente la relación entre el voltaje de sal
 
 El análisis del circuito RLC en serie permitió obtener su modelo matemático a partir de las ecuaciones correspondientes a la resistencia, el inductor y el capacitor.
 
-Mediante la Ley de Kirchhoff de Voltajes se obtuvo una ecuación diferencial de segundo orden que relaciona directamente el voltaje de entrada $e_i(t)$ con el voltaje de salida $e_o(t)$.
+Para realizar el análisis se estableció que el voltaje del capacitor $V_C(t)$ corresponde al voltaje de salida $e_o(t)$. Por esta razón, se utiliza $e_o(t)$ en las ecuaciones del sistema.
+
+Mediante la Ley de Kirchhoff de Voltajes se obtuvo una ecuación diferencial de segundo orden que relaciona el voltaje de entrada $e_i(t)$ con el voltaje de salida $e_o(t)$.
 
 Posteriormente, se aplicó la transformada de Laplace considerando condiciones iniciales cero, lo que permitió transformar la ecuación diferencial en una expresión algebraica en el dominio de $s$.
 
