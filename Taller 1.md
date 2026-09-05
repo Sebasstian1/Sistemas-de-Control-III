@@ -67,65 +67,30 @@ $$
 
 Aplicando la Ley de Kirchhoff de Voltajes:
 
-$$
-V(t) = V_R(t) + V_L(t) + V_C(t)
-$$
+$$V(t) = V_R(t) + V_L(t) + V_C(t)$$
 
 Sustituyendo las expresiones de cada elemento:
 
-$$
-V(t)
-=
-R i(t)
-+
-L \frac{di(t)}{dt}
-+
-\frac{q(t)}{C}
-$$
+$$V(t) = R i(t) + L \frac{di(t)}{dt} + \frac{q(t)}{C}$$
 
 Como:
 
-$$
-i(t) = \frac{dq(t)}{dt}
-$$
+$$i(t) = \frac{dq(t)}{dt}$$
 
 entonces:
 
-$$
-\frac{di(t)}{dt}
-=
-\frac{d^2q(t)}{dt^2}
-$$
+$$\frac{di(t)}{dt} = \frac{d^2q(t)}{dt^2}$$
 
 Por lo tanto:
 
-$$
-V(t)
-=
-R \frac{dq(t)}{dt}
-+
-L \frac{d^2q(t)}{dt^2}
-+
-\frac{q(t)}{C}
-$$
+$$V(t) = R \frac{dq(t)}{dt} + L \frac{d^2q(t)}{dt^2} + \frac{q(t)}{C}$$
 
 Finalmente:
 
-$$
-\boxed{
-L \frac{d^2q(t)}{dt^2}
-+
-R \frac{dq(t)}{dt}
-+
-\frac{1}{C}q(t)
-=
-V(t)
-}
-$$
+$$L \frac{d^2q(t)}{dt^2} + R \frac{dq(t)}{dt} + \frac{1}{C}q(t) = V(t)$$
 
 Esta es la ecuación diferencial de segundo orden del circuito RLC.
 
----
 
 ## 4. Ecuación Diferencial en Función de la Corriente
 
