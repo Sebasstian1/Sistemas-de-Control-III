@@ -1,444 +1,746 @@
-%% =========================================================
-% SISTEMAS DE CONTROL III
-% EJERCICIO 1 - CIRCUITO RLC SERIE
+# Sistemas de Control III - Circuito RLC
+
+En este ejercicio se analiza un circuito eléctrico RLC conectado en serie con el objetivo de obtener la ecuación diferencial del sistema y posteriormente determinar su función de transferencia.
+
+La entrada del sistema está representada por el voltaje \(e_i(t)\), mientras que la salida corresponde al voltaje \(e_o(t)\), medido en el capacitor.
+
+## 1. Descripción del Circuito
+
+El circuito está compuesto por tres elementos eléctricos:
+
+- **\(R\):** Resistencia.
+- **\(L\):** Inductancia.
+- **\(C\):** Capacitancia.
+
+Además, se tienen las siguientes variables:
+
+- **\(e_i(t)\):** Voltaje de entrada.
+- **\(e_o(t)\):** Voltaje de salida.
+- **\(i(t)\):** Corriente que circula por el circuito.
+
+Debido a que la resistencia, el inductor y el capacitor están conectados en serie, la corriente \(i(t)\) es la misma en los tres elementos.
+
+La entrada y salida del sistema son:
+
+$$
+\boxed{\text{Entrada}=e_i(t)}
+$$
+
+$$
+\boxed{\text{Salida}=e_o(t)}
+$$
+
+La salida \(e_o(t)\) corresponde al voltaje presente en el capacitor.
+
+---
+
+## 2. Ley de Voltajes de Kirchhoff
+
+Para obtener la ecuación diferencial del sistema se utiliza la **Ley de Voltajes de Kirchhoff**.
+
+Esta ley establece que la suma de las caídas de voltaje en una malla cerrada es igual al voltaje aplicado.
+
+Por lo tanto:
+
+$$
+e_i(t)=e_R(t)+e_L(t)+e_C(t)
+$$
+
+Como el voltaje de salida se encuentra en el capacitor:
+
+$$
+e_C(t)=e_o(t)
+$$
+
+Entonces:
+
+$$
+e_i(t)=e_R(t)+e_L(t)+e_o(t)
+$$
+
+Esta expresión será utilizada para obtener la ecuación diferencial del circuito.
+
+---
+
+## 3. Ecuación de la Resistencia
+
+Para la resistencia se utiliza la Ley de Ohm:
+
+$$
+e_R(t)=Ri(t)
+$$
+
+Donde:
+
+- \(e_R(t)\) es el voltaje en la resistencia.
+- \(R\) es el valor de la resistencia.
+- \(i(t)\) es la corriente que circula por el circuito.
+
+Por lo tanto:
+
+$$
+\boxed{e_R(t)=Ri(t)}
+$$
+
+---
+
+## 4. Ecuación del Inductor
+
+Para el inductor se utiliza la relación entre el voltaje y la corriente:
+
+$$
+e_L(t)=L\frac{di(t)}{dt}
+$$
+
+Donde:
+
+- \(e_L(t)\) es el voltaje en el inductor.
+- \(L\) es la inductancia.
+- \(i(t)\) es la corriente.
+- \(\frac{di(t)}{dt}\) representa la variación de la corriente con respecto al tiempo.
+
+Por lo tanto:
+
+$$
+\boxed{
+e_L(t)=L\frac{di(t)}{dt}
+}
+$$
+
+---
+
+## 5. Ecuación del Capacitor
+
+Para el capacitor se utiliza la relación:
+
+$$
+i(t)=C\frac{de_C(t)}{dt}
+$$
+
+Como el voltaje del capacitor corresponde a la salida:
+
+$$
+e_C(t)=e_o(t)
+$$
+
+Entonces:
+
+$$
+i(t)=C\frac{de_o(t)}{dt}
+$$
+
+Por lo tanto:
+
+$$
+\boxed{
+i(t)=C\frac{de_o(t)}{dt}
+}
+$$
+
+Esta expresión permite representar la corriente del circuito en función del voltaje de salida.
+
+---
+
+## 6. Derivada de la Corriente
+
+Para utilizar la ecuación del inductor necesitamos obtener:
+
+$$
+\frac{di(t)}{dt}
+$$
+
+Partimos de la ecuación obtenida para el capacitor:
+
+$$
+i(t)=C\frac{de_o(t)}{dt}
+$$
+
+Derivando ambos lados con respecto al tiempo:
+
+$$
+\frac{di(t)}{dt}
+=
+C\frac{d^2e_o(t)}{dt^2}
+$$
+
+Por lo tanto:
+
+$$
+\boxed{
+\frac{di(t)}{dt}
+=
+C\frac{d^2e_o(t)}{dt^2}
+}
+$$
+
+---
+
+## 7. Sustitución en la Ley de Kirchhoff
+
+La ecuación de Kirchhoff obtenida anteriormente es:
+
+$$
+e_i(t)=e_R(t)+e_L(t)+e_o(t)
+$$
+
+Sustituyendo la ecuación de la resistencia:
+
+$$
+e_R(t)=Ri(t)
+$$
+
+y la ecuación del inductor:
+
+$$
+e_L(t)=L\frac{di(t)}{dt}
+$$
+
+obtenemos:
+
+$$
+e_i(t)
+=
+Ri(t)
++
+L\frac{di(t)}{dt}
++
+e_o(t)
+$$
+
+Ahora se sustituyen las expresiones obtenidas para el capacitor.
+
+Sabemos que:
+
+$$
+i(t)=C\frac{de_o(t)}{dt}
+$$
+
+y:
+
+$$
+\frac{di(t)}{dt}
+=
+C\frac{d^2e_o(t)}{dt^2}
+$$
+
+Sustituyendo:
+
+$$
+e_i(t)
+=
+R\left(C\frac{de_o(t)}{dt}\right)
++
+L\left(C\frac{d^2e_o(t)}{dt^2}\right)
++
+e_o(t)
+$$
+
+Realizando las multiplicaciones:
+
+$$
+e_i(t)
+=
+RC\frac{de_o(t)}{dt}
++
+LC\frac{d^2e_o(t)}{dt^2}
++
+e_o(t)
+$$
+
+---
+
+## 8. Ecuación Diferencial
+
+Ordenando los términos de acuerdo con el orden de las derivadas:
+
+$$
+\boxed{
+LC\frac{d^2e_o(t)}{dt^2}
++
+RC\frac{de_o(t)}{dt}
++
+e_o(t)
+=
+e_i(t)
+}
+$$
+
+Esta es la ecuación diferencial que describe el comportamiento dinámico del circuito RLC.
+
+La ecuación tiene segundo orden debido a la presencia del capacitor y del inductor.
+
+---
+
+## 9. Aplicación de la Transformada de Laplace
+
+Para obtener la función de transferencia se aplica la Transformada de Laplace a la ecuación diferencial.
+
+Partimos de:
+
+$$
+LC\frac{d^2e_o(t)}{dt^2}
++
+RC\frac{de_o(t)}{dt}
++
+e_o(t)
+=
+e_i(t)
+$$
+
+Para obtener la función de transferencia se consideran condiciones iniciales nulas:
+
+$$
+e_o(0)=0
+$$
+
+y:
+
+$$
+\frac{de_o(0)}{dt}=0
+$$
+
+Bajo estas condiciones, las transformadas de las derivadas son:
+
+$$
+\mathcal{L}
+\left\{
+\frac{de_o(t)}{dt}
+\right\}
+=
+sE_o(s)
+$$
+
+y:
+
+$$
+\mathcal{L}
+\left\{
+\frac{d^2e_o(t)}{dt^2}
+\right\}
+=
+s^2E_o(s)
+$$
+
+Además:
+
+$$
+\mathcal{L}\{e_o(t)\}=E_o(s)
+$$
+
+y:
+
+$$
+\mathcal{L}\{e_i(t)\}=E_i(s)
+$$
+
+---
+
+## 10. Ecuación en el Dominio de Laplace
+
+Aplicando la Transformada de Laplace a la ecuación diferencial:
+
+$$
+LC\frac{d^2e_o(t)}{dt^2}
++
+RC\frac{de_o(t)}{dt}
++
+e_o(t)
+=
+e_i(t)
+$$
+
+se obtiene:
+
+$$
+LCs^2E_o(s)
++
+RCsE_o(s)
++
+E_o(s)
+=
+E_i(s)
+$$
+
+Esta es la representación algebraica del sistema en el dominio de Laplace.
+
+---
+
+## 11. Factorización de \(E_o(s)\)
+
+Todos los términos del lado izquierdo contienen \(E_o(s)\).
+
+Por lo tanto, se puede sacar como factor común:
+
+$$
+E_o(s)
+\left(
+LCs^2+RCs+1
+\right)
+=
+E_i(s)
+$$
+
+Ahora se despeja \(E_o(s)\):
+
+$$
+E_o(s)
+=
+\frac{E_i(s)}
+{LCs^2+RCs+1}
+$$
+
+---
+
+## 12. Función de Transferencia
+
+La función de transferencia se define como la relación entre la salida y la entrada en el dominio de Laplace, considerando condiciones iniciales nulas.
+
+Por definición:
+
+$$
+G(s)=\frac{E_o(s)}{E_i(s)}
+$$
+
+A partir de la ecuación obtenida:
+
+$$
+E_o(s)
+=
+\frac{E_i(s)}
+{LCs^2+RCs+1}
+$$
+
+se obtiene:
+
+$$
+\boxed{
+G(s)
+=
+\frac{1}
+{LCs^2+RCs+1}
+}
+$$
+
+Por lo tanto, la función de transferencia del circuito es:
+
+$$
+\boxed{
+\frac{E_o(s)}{E_i(s)}
+=
+\frac{1}
+{LCs^2+RCs+1}
+}
+$$
+
+---
+
+## 13. Implementación en MATLAB
+
+Para implementar el procedimiento en MATLAB se utilizan variables simbólicas.
+
+Primero se definen los parámetros del circuito:
+
+```matlab
+clc;
+clear;
+close all;
+
+syms R L C t s
+syms ei(t) eo(t) i(t)
+```
+
+Posteriormente se establecen las ecuaciones correspondientes a cada elemento.
+
+### Resistencia
+
+```matlab
+eR = R*i(t);
+```
+
+Esta expresión representa:
+
+$$
+e_R(t)=Ri(t)
+$$
+
+### Inductor
+
+```matlab
+eL = L*diff(i(t),t);
+```
+
+Esta expresión representa:
+
+$$
+e_L(t)=L\frac{di(t)}{dt}
+$$
+
+### Capacitor
+
+```matlab
+iC = C*diff(eo(t),t);
+```
+
+Esta expresión representa:
+
+$$
+i(t)=C\frac{de_o(t)}{dt}
+$$
+
+### Derivada de la corriente
+
+```matlab
+di_dt = diff(iC,t);
+```
+
+Con esto MATLAB obtiene:
+
+$$
+\frac{di(t)}{dt}
+=
+C\frac{d^2e_o(t)}{dt^2}
+$$
+
+---
+
+## 14. Obtención de la Ecuación Diferencial en MATLAB
+
+La ecuación de Kirchhoff es:
+
+$$
+e_i(t)=e_R(t)+e_L(t)+e_o(t)
+$$
+
+Se sustituyen las expresiones obtenidas anteriormente:
+
+```matlab
+ecuacion_diferencial = ...
+    ei(t) == R*iC + L*di_dt + eo(t);
+```
+
+MATLAB representa entonces la ecuación diferencial del sistema:
+
+$$
+\boxed{
+LC\frac{d^2e_o(t)}{dt^2}
++
+RC\frac{de_o(t)}{dt}
++
+e_o(t)
+=
+e_i(t)
+}
+$$
+
+---
+
+## 15. Función de Transferencia en MATLAB
+
+La función de transferencia obtenida matemáticamente es:
+
+$$
+G(s)
+=
+\frac{1}
+{LCs^2+RCs+1}
+$$
+
+Esta expresión se puede representar simbólicamente en MATLAB mediante:
+
+```matlab
+G = 1/(L*C*s^2 + R*C*s + 1);
+```
+
+Finalmente, se muestra el resultado:
+
+```matlab
+disp('Funcion de transferencia:');
+disp(G);
+```
+
+---
+
+## 16. Programa Completo en MATLAB
+
+El siguiente programa contiene todo el procedimiento desarrollado anteriormente:
+
+```matlab
+%% SISTEMAS DE CONTROL III
+% Analisis de un circuito RLC serie
 %
-% OBJETIVO:
-% Obtener la ecuacion diferencial y la funcion de
-% transferencia del circuito RLC mostrado.
-%
-% ENTRADA:
-%       ei(t) -> Voltaje de entrada
-%
-% SALIDA:
-%       eo(t) -> Voltaje de salida medido en el capacitor
-%
-% ELEMENTOS:
-%       R -> Resistencia
-%       L -> Inductancia
-%       C -> Capacitancia
-%% =========================================================
+% Entrada: ei(t)
+% Salida:  eo(t)
 
 clc;
 clear;
 close all;
 
-
-%% =========================================================
-% PASO 1: DEFINICION DE LAS VARIABLES
-% =========================================================
-%
-% En este paso se definen las variables simbolicas que
-% utilizaremos para realizar el desarrollo matematico.
-%
-% R representa la resistencia en ohmios.
-% L representa la inductancia en henrios.
-% C representa la capacitancia en faradios.
-% t representa el tiempo.
-% s representa la variable compleja de Laplace.
-%
-% ei(t) representa la señal de entrada.
-% eo(t) representa la señal de salida.
-% i(t) representa la corriente que circula por el circuito.
+%% Definicion de variables
 
 syms R L C t s
 syms ei(t) eo(t) i(t)
 
-
-fprintf('================================================\n');
-fprintf('          SISTEMAS DE CONTROL III\n');
-fprintf('             EJERCICIO 1 - RLC\n');
-fprintf('================================================\n\n');
-
-
-%% =========================================================
-% PASO 2: IDENTIFICACION DEL SISTEMA
-% =========================================================
-%
-% El circuito esta formado por una resistencia R,
-% un inductor L y un capacitor C conectados en serie.
-%
-% Al estar conectados en serie, la misma corriente i(t)
-% circula por los tres elementos.
-%
-% La entrada del sistema es ei(t).
-% La salida del sistema es eo(t), que corresponde al
-% voltaje medido en el capacitor.
-
-fprintf('PASO 2: IDENTIFICACION DEL SISTEMA\n\n');
-
-fprintf('Entrada del sistema: ei(t)\n');
-fprintf('Salida del sistema:  eo(t)\n');
-fprintf('Configuracion: R, L y C conectados en serie.\n');
-fprintf('La corriente i(t) es la misma en los tres elementos.\n\n');
-
-
-%% =========================================================
-% PASO 3: LEY DE VOLTAJES DE KIRCHHOFF
-% =========================================================
-%
-% Debido a que tenemos una sola malla, aplicamos la
-% Ley de Voltajes de Kirchhoff.
-%
-% Esta ley establece que la suma de las caidas de tension
-% en los elementos del circuito es igual a la tension
-% aplicada por la fuente.
-%
-% Por lo tanto:
-%
-% ei(t) = eR(t) + eL(t) + eC(t)
-%
-% Como la salida se encuentra en el capacitor:
-%
-% eC(t) = eo(t)
-%
-% Entonces:
+%% Ley de Voltajes de Kirchhoff
 %
 % ei(t) = eR(t) + eL(t) + eo(t)
 
-fprintf('PASO 3: LEY DE VOLTAJES DE KIRCHHOFF\n\n');
-
-fprintf('Para la malla del circuito se tiene:\n\n');
-fprintf('ei(t) = eR(t) + eL(t) + eC(t)\n\n');
-
-fprintf('Como la salida esta medida en el capacitor:\n\n');
-fprintf('eC(t) = eo(t)\n\n');
-
-fprintf('Por lo tanto:\n\n');
-fprintf('ei(t) = eR(t) + eL(t) + eo(t)\n\n');
-
-
-%% =========================================================
-% PASO 4: ECUACION DE LA RESISTENCIA
-% =========================================================
-%
-% Para la resistencia utilizamos la Ley de Ohm:
+%% Ecuacion de la resistencia
 %
 % eR(t) = R*i(t)
-%
-% Donde:
-% R = resistencia
-% i(t) = corriente que circula por el circuito
-
-fprintf('PASO 4: ECUACION DE LA RESISTENCIA\n\n');
-
-fprintf('Aplicando la Ley de Ohm:\n\n');
-fprintf('eR(t) = R*i(t)\n\n');
 
 eR = R*i(t);
 
-disp('La tension en la resistencia es:');
-disp(eR);
-fprintf('\n');
-
-
-%% =========================================================
-% PASO 5: ECUACION DEL INDUCTOR
-% =========================================================
-%
-% Para el inductor utilizamos la relacion:
+%% Ecuacion del inductor
 %
 % eL(t) = L*di(t)/dt
-%
-% Esto significa que el voltaje del inductor depende
-% de la variacion de la corriente con respecto al tiempo.
-
-fprintf('PASO 5: ECUACION DEL INDUCTOR\n\n');
-
-fprintf('La tension en el inductor es:\n\n');
-fprintf('eL(t) = L*di(t)/dt\n\n');
 
 eL = L*diff(i(t),t);
 
-disp('La tension en el inductor es:');
-disp(eL);
-fprintf('\n');
-
-
-%% =========================================================
-% PASO 6: ECUACION DEL CAPACITOR
-% =========================================================
-%
-% Para el capacitor utilizamos la relacion:
-%
-% i(t) = C*deC(t)/dt
-%
-% Como la tension del capacitor es igual a la salida:
-%
-% eC(t) = eo(t)
-%
-% Entonces:
-%
-% i(t) = C*deo(t)/dt
-
-fprintf('PASO 6: ECUACION DEL CAPACITOR\n\n');
-
-fprintf('La relacion corriente-voltaje del capacitor es:\n\n');
-fprintf('i(t) = C*deo(t)/dt\n\n');
-
-corriente_capacitor = C*diff(eo(t),t);
-
-disp('Por lo tanto, la corriente es:');
-disp(corriente_capacitor);
-fprintf('\n');
-
-
-%% =========================================================
-% PASO 7: DERIVADA DE LA CORRIENTE
-% =========================================================
-%
-% En la ecuacion del inductor necesitamos conocer:
-%
-% di(t)/dt
-%
-% Partimos de:
+%% Ecuacion del capacitor
 %
 % i(t) = C*deo(t)/dt
 %
-% Derivamos ambos lados respecto al tiempo:
+% Como eo(t) es el voltaje del capacitor:
+
+iC = C*diff(eo(t),t);
+
+%% Derivada de la corriente
 %
 % di(t)/dt = C*d2eo(t)/dt2
 
-fprintf('PASO 7: DERIVADA DE LA CORRIENTE\n\n');
+di_dt = diff(iC,t);
 
-fprintf('Partimos de:\n\n');
-fprintf('i(t) = C*deo(t)/dt\n\n');
-
-fprintf('Derivando ambos lados respecto al tiempo:\n\n');
-fprintf('di(t)/dt = C*d2eo(t)/dt2\n\n');
-
-derivada_corriente = diff(corriente_capacitor,t);
-
-disp('La derivada de la corriente es:');
-disp(derivada_corriente);
-fprintf('\n');
-
-
-%% =========================================================
-% PASO 8: SUSTITUCION EN LA ECUACION DE KIRCHHOFF
-% =========================================================
+%% Ecuacion diferencial
 %
-% La ecuacion obtenida mediante Kirchhoff es:
+% ei(t) = R*i(t) + L*di(t)/dt + eo(t)
+
+ecuacion_diferencial = ...
+    ei(t) == R*iC + L*di_dt + eo(t);
+
+%% Mostrar ecuacion diferencial
+
+disp(' ');
+disp('==============================================');
+disp('ECUACION DIFERENCIAL');
+disp('==============================================');
+disp(' ');
+
+disp(ecuacion_diferencial);
+
+%% Funcion de transferencia
 %
-% ei(t) = eR(t) + eL(t) + eo(t)
-%
-% Sabemos que:
-%
-% eR(t) = R*i(t)
-%
-% eL(t) = L*di(t)/dt
-%
-% i(t) = C*deo(t)/dt
-%
-% di(t)/dt = C*d2eo(t)/dt2
-%
-% Sustituimos todas estas expresiones.
-
-fprintf('PASO 8: SUSTITUCION EN LA ECUACION DE KIRCHHOFF\n\n');
-
-fprintf('La ecuacion de Kirchhoff es:\n\n');
-fprintf('ei(t) = eR(t) + eL(t) + eo(t)\n\n');
-
-fprintf('Sustituyendo la resistencia y el inductor:\n\n');
-fprintf('ei(t) = R*i(t) + L*di(t)/dt + eo(t)\n\n');
-
-fprintf('Ahora sustituimos la corriente del capacitor:\n\n');
-fprintf('i(t) = C*deo(t)/dt\n\n');
-
-fprintf('Y su derivada:\n\n');
-fprintf('di(t)/dt = C*d2eo(t)/dt2\n\n');
-
-
-%% =========================================================
-% PASO 9: ECUACION DIFERENCIAL
-% =========================================================
-%
-% Al realizar las sustituciones obtenemos:
-%
-% ei(t) = R*C*deo(t)/dt
-%         + L*C*d2eo(t)/dt2
-%         + eo(t)
-%
-% Ordenando los terminos:
-%
-% L*C*d2eo(t)/dt2
-% + R*C*deo(t)/dt
-% + eo(t)
-% = ei(t)
-
-fprintf('PASO 9: OBTENCION DE LA ECUACION DIFERENCIAL\n\n');
-
-fprintf('Despues de realizar las sustituciones:\n\n');
-
-fprintf('ei(t) = R*C*deo(t)/dt + L*C*d2eo(t)/dt2 + eo(t)\n\n');
-
-fprintf('Ordenando los terminos:\n\n');
-
-fprintf('L*C*d2eo(t)/dt2 + R*C*deo(t)/dt + eo(t) = ei(t)\n\n');
-
-fprintf('================================================\n');
-fprintf('ECUACION DIFERENCIAL FINAL:\n');
-fprintf('================================================\n\n');
-
-fprintf('L*C*d2eo(t)/dt2 + R*C*deo(t)/dt + eo(t) = ei(t)\n\n');
-
-
-%% =========================================================
-% PASO 10: TRANSFORMADA DE LAPLACE
-% =========================================================
-%
-% Para obtener la funcion de transferencia transformamos
-% la ecuacion diferencial del dominio del tiempo al dominio
-% de Laplace.
-%
-% La ecuacion diferencial es:
-%
-% L*C*d2eo(t)/dt2 + R*C*deo(t)/dt + eo(t) = ei(t)
-%
-% Consideramos condiciones iniciales nulas:
-%
-% eo(0) = 0
-%
-% deo(0)/dt = 0
-%
-% De esta manera:
-%
-% L{deo(t)/dt} = s*Eo(s)
-%
-% L{d2eo(t)/dt2} = s^2*Eo(s)
-
-fprintf('PASO 10: TRANSFORMADA DE LAPLACE\n\n');
-
-fprintf('Para obtener la funcion de transferencia se consideran\n');
-fprintf('condiciones iniciales nulas.\n\n');
-
-fprintf('eo(0) = 0\n');
-fprintf('deo(0)/dt = 0\n\n');
-
-fprintf('Aplicando Transformada de Laplace:\n\n');
-
-fprintf('L{deo(t)/dt} = s*Eo(s)\n');
-fprintf('L{d2eo(t)/dt2} = s^2*Eo(s)\n\n');
-
-
-%% =========================================================
-% PASO 11: ECUACION EN EL DOMINIO DE LAPLACE
-% =========================================================
-%
-% Aplicando Laplace a:
-%
-% L*C*d2eo(t)/dt2 + R*C*deo(t)/dt + eo(t) = ei(t)
-%
-% obtenemos:
-%
-% L*C*s^2*Eo(s)
-% + R*C*s*Eo(s)
-% + Eo(s)
-% = Ei(s)
-
-fprintf('PASO 11: ECUACION EN EL DOMINIO DE LAPLACE\n\n');
-
-fprintf('La ecuacion transformada es:\n\n');
-
-fprintf('L*C*s^2*Eo(s) + R*C*s*Eo(s) + Eo(s) = Ei(s)\n\n');
-
-
-%% =========================================================
-% PASO 12: FACTORIZACION DE Eo(s)
-% =========================================================
-%
-% En este paso agrupamos todos los terminos que contienen
-% Eo(s).
-%
-% Sacamos Eo(s) como factor comun:
-%
-% Eo(s)[L*C*s^2 + R*C*s + 1] = Ei(s)
-
-fprintf('PASO 12: FACTORIZACION DE Eo(s)\n\n');
-
-fprintf('Sacamos Eo(s) como factor comun:\n\n');
-
-fprintf('Eo(s)[L*C*s^2 + R*C*s + 1] = Ei(s)\n\n');
-
-
-%% =========================================================
-% PASO 13: OBTENCION DE LA FUNCION DE TRANSFERENCIA
-% =========================================================
-%
-% La funcion de transferencia de un sistema se define como:
-%
-%              Eo(s)
-% G(s) = ----------------
-%              Ei(s)
-%
-% con condiciones iniciales nulas.
-%
-% Despejando Eo(s)/Ei(s):
-%
-%              1
-% G(s) = ------------------------
-%        L*C*s^2 + R*C*s + 1
-
-fprintf('PASO 13: FUNCION DE TRANSFERENCIA\n\n');
-
-fprintf('Por definicion:\n\n');
-
-fprintf('             Eo(s)\n');
-fprintf('G(s) = ----------------\n');
-fprintf('             Ei(s)\n\n');
-
-fprintf('Despejando se obtiene:\n\n');
-
-fprintf('                 1\n');
-fprintf('G(s) = -------------------------\n');
-fprintf('       L*C*s^2 + R*C*s + 1\n\n');
-
-
-%% =========================================================
-% PASO 14: REPRESENTACION SIMBOLICA EN MATLAB
-% =========================================================
-%
-% Finalmente representamos la funcion de transferencia
-% utilizando variables simbolicas.
-%
-% La expresion obtenida es:
-%
-%                 1
-% G(s) = -------------------------
-%       L*C*s^2 + R*C*s + 1
-
-fprintf('PASO 14: REPRESENTACION SIMBOLICA\n\n');
+% G(s) = Eo(s)/Ei(s)
 
 G = 1/(L*C*s^2 + R*C*s + 1);
 
-fprintf('La funcion de transferencia obtenida es:\n\n');
+%% Mostrar funcion de transferencia
 
+disp(' ');
+disp('==============================================');
+disp('FUNCION DE TRANSFERENCIA');
+disp('==============================================');
+disp(' ');
+
+disp('G(s) = Eo(s)/Ei(s)');
 disp(G);
 
-fprintf('\n');
+%% Resultado general
 
+disp(' ');
+disp('==============================================');
+disp('RESULTADO FINAL');
+disp('==============================================');
+disp(' ');
 
-%% =========================================================
-% RESULTADOS FINALES
-% =========================================================
+disp('Ecuacion diferencial:');
+disp('LC*d2eo(t)/dt2 + RC*deo(t)/dt + eo(t) = ei(t)');
 
-fprintf('================================================\n');
-fprintf('              RESULTADOS FINALES\n');
-fprintf('================================================\n\n');
+disp(' ');
 
-fprintf('1. ECUACION DIFERENCIAL:\n\n');
+disp('Funcion de transferencia:');
+disp('G(s) = Eo(s)/Ei(s)');
 
-fprintf('L*C*d2eo(t)/dt2 + R*C*deo(t)/dt + eo(t) = ei(t)\n\n');
+disp('G(s) = 1/(LC*s^2 + RC*s + 1)');
+```
 
-fprintf('2. FUNCION DE TRANSFERENCIA:\n\n');
+---
 
-fprintf('                 1\n');
-fprintf('G(s) = -------------------------\n');
-fprintf('       L*C*s^2 + R*C*s + 1\n\n');
+## 17. Resultado Final
 
-fprintf('Donde:\n');
-fprintf('ei(t) -> Entrada del sistema\n');
-fprintf('eo(t) -> Salida del sistema\n\n');
+Después de realizar todo el procedimiento se obtiene la ecuación diferencial:
 
-fprintf('================================================\n');
-fprintf('             FIN DEL EJERCICIO\n');
-fprintf('================================================\n');
+$$
+\boxed{
+LC\frac{d^2e_o(t)}{dt^2}
++
+RC\frac{de_o(t)}{dt}
++
+e_o(t)
+=
+e_i(t)
+}
+$$
+
+Y la función de transferencia:
+
+$$
+\boxed{
+G(s)
+=
+\frac{E_o(s)}{E_i(s)}
+=
+\frac{1}
+{LCs^2+RCs+1}
+}
+$$
+
+Por lo tanto, la relación entre la entrada \(e_i(t)\) y la salida \(e_o(t)\) del circuito RLC queda completamente determinada por:
+
+$$
+\boxed{
+\frac{E_o(s)}{E_i(s)}
+=
+\frac{1}
+{LCs^2+RCs+1}
+}
+$$
+
+---
+
+## 18. Conclusiones
+
+A partir del análisis del circuito RLC se aplicó la Ley de Voltajes de Kirchhoff y las ecuaciones características de la resistencia, el inductor y el capacitor.
+
+La corriente del circuito se expresó en función del voltaje de salida \(e_o(t)\), permitiendo eliminar la variable \(i(t)\) y obtener una ecuación diferencial únicamente en términos de la entrada \(e_i(t)\) y la salida \(e_o(t)\).
+
+La ecuación diferencial obtenida fue:
+
+$$
+LC\frac{d^2e_o(t)}{dt^2}
++
+RC\frac{de_o(t)}{dt}
++
+e_o(t)
+=
+e_i(t)
+$$
+
+Posteriormente, mediante la Transformada de Laplace y considerando condiciones iniciales nulas, se obtuvo la función de transferencia:
+
+$$
+G(s)
+=
+\frac{E_o(s)}{E_i(s)}
+=
+\frac{1}
+{LCs^2+RCs+1}
+$$
+
+Esta función de transferencia permite representar matemáticamente el comportamiento dinámico del circuito y puede utilizarse posteriormente para analizar la respuesta y las características del sistema.
+
+---
+
+## 19. Referencias
+
+- Ogata, K. (2010). *Ingeniería de Control Moderna*. Pearson.
+- Dorf, R. C., & Bishop, R. H. (2017). *Sistemas de Control Moderno*. Prentice Hall.
