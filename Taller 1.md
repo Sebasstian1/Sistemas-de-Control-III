@@ -6,13 +6,17 @@ El objetivo es obtener el modelo matemático del circuito a partir de la Ley de 
 
 En este análisis se utilizan:
 
-- $E_i(t)$: voltaje de entrada.
-- $E_o(t)$: voltaje de salida.
+- $e_i(t)$: voltaje de entrada en el dominio del tiempo.
+- $e_o(t)$: voltaje de salida en el dominio del tiempo.
+- $E_i(s)$: voltaje de entrada en el dominio de Laplace.
+- $E_o(s)$: voltaje de salida en el dominio de Laplace.
 - $R$: resistencia.
 - $L$: inductancia.
 - $C$: capacitancia.
 - $q(t)$: carga eléctrica.
 - $i(t)$: corriente del circuito.
+- $Q(s)$: transformada de Laplace de la carga.
+- $I(s)$: transformada de Laplace de la corriente.
 
 ---
 
@@ -22,9 +26,9 @@ Un circuito RLC en serie está compuesto por una resistencia $R$, una inductanci
 
 Al estar conectados en serie, la misma corriente $i(t)$ circula por los tres elementos.
 
-La entrada del sistema se representa mediante $E_i(t)$ y la salida mediante $E_o(t)$.
+La señal de entrada del sistema se representa mediante $e_i(t)$ y la señal de salida mediante $e_o(t)$.
 
-El circuito RLC es un sistema eléctrico de segundo orden y puede ser utilizado como modelo para el estudio de sistemas dinámicos y sistemas de control.
+El circuito RLC es un sistema eléctrico de segundo orden y puede utilizarse como modelo para el estudio de sistemas dinámicos y sistemas de control.
 
 ---
 
@@ -36,7 +40,7 @@ La resistencia disipa energía en forma de calor.
 
 Su voltaje está dado por:
 
-$$E_R(t)=Ri(t)$$
+$$e_R(t)=Ri(t)$$
 
 ### Inductor
 
@@ -44,7 +48,7 @@ El inductor almacena energía en forma de campo magnético.
 
 Su voltaje está dado por:
 
-$$E_L(t)=L\frac{di(t)}{dt}$$
+$$e_L(t)=L\frac{di(t)}{dt}$$
 
 ### Capacitor
 
@@ -52,7 +56,7 @@ El capacitor almacena energía en forma de campo eléctrico.
 
 Su voltaje está dado por:
 
-$$E_C(t)=\frac{q(t)}{C}$$
+$$e_C(t)=\frac{q(t)}{C}$$
 
 donde $q(t)$ representa la carga eléctrica.
 
@@ -66,11 +70,11 @@ $$i(t)=\frac{dq(t)}{dt}$$
 
 Aplicando la Ley de Kirchhoff de Voltajes al circuito:
 
-$$E_i(t)=E_R(t)+E_L(t)+E_C(t)$$
+$$e_i(t)=e_R(t)+e_L(t)+e_C(t)$$
 
 Sustituyendo las expresiones de cada elemento:
 
-$$E_i(t)=Ri(t)+L\frac{di(t)}{dt}+\frac{q(t)}{C}$$
+$$e_i(t)=Ri(t)+L\frac{di(t)}{dt}+\frac{q(t)}{C}$$
 
 Como:
 
@@ -82,11 +86,11 @@ $$\frac{di(t)}{dt}=\frac{d^2q(t)}{dt^2}$$
 
 Por lo tanto:
 
-$$E_i(t)=R\frac{dq(t)}{dt}+L\frac{d^2q(t)}{dt^2}+\frac{q(t)}{C}$$
+$$e_i(t)=R\frac{dq(t)}{dt}+L\frac{d^2q(t)}{dt^2}+\frac{q(t)}{C}$$
 
 Finalmente, la ecuación diferencial del circuito es:
 
-$$L\frac{d^2q(t)}{dt^2}+R\frac{dq(t)}{dt}+\frac{1}{C}q(t)=E_i(t)$$
+$$L\frac{d^2q(t)}{dt^2}+R\frac{dq(t)}{dt}+\frac{1}{C}q(t)=e_i(t)$$
 
 Esta es la ecuación diferencial de segundo orden que describe el comportamiento del circuito RLC.
 
@@ -96,7 +100,7 @@ Esta es la ecuación diferencial de segundo orden que describe el comportamiento
 
 Partiendo de:
 
-$$L\frac{d^2q(t)}{dt^2}+R\frac{dq(t)}{dt}+\frac{1}{C}q(t)=E_i(t)$$
+$$L\frac{d^2q(t)}{dt^2}+R\frac{dq(t)}{dt}+\frac{1}{C}q(t)=e_i(t)$$
 
 y utilizando:
 
@@ -104,11 +108,11 @@ $$i(t)=\frac{dq(t)}{dt}$$
 
 derivamos ambos lados de la ecuación:
 
-$$L\frac{d^2i(t)}{dt^2}+R\frac{di(t)}{dt}+\frac{1}{C}i(t)=\frac{dE_i(t)}{dt}$$
+$$L\frac{d^2i(t)}{dt^2}+R\frac{di(t)}{dt}+\frac{1}{C}i(t)=\frac{de_i(t)}{dt}$$
 
 Por lo tanto, la ecuación diferencial en función de la corriente es:
 
-$$L\frac{d^2i(t)}{dt^2}+R\frac{di(t)}{dt}+\frac{1}{C}i(t)=\frac{dE_i(t)}{dt}$$
+$$L\frac{d^2i(t)}{dt^2}+R\frac{di(t)}{dt}+\frac{1}{C}i(t)=\frac{de_i(t)}{dt}$$
 
 ---
 
@@ -122,11 +126,11 @@ $$i(0)=i_0$$
 
 El voltaje inicial del capacitor está relacionado con la carga mediante:
 
-$$q_0=CE_C(0)$$
+$$q_0=Ce_C(0)$$
 
 Por lo tanto:
 
-$$q(0)=CE_C(0)$$
+$$q(0)=Ce_C(0)$$
 
 Estas condiciones iniciales permiten determinar la respuesta completa del circuito.
 
@@ -136,7 +140,7 @@ Estas condiciones iniciales permiten determinar la respuesta completa del circui
 
 Partimos de la ecuación diferencial:
 
-$$Lq''(t)+Rq'(t)+\frac{1}{C}q(t)=E_i(t)$$
+$$Lq''(t)+Rq'(t)+\frac{1}{C}q(t)=e_i(t)$$
 
 Las transformadas necesarias son:
 
@@ -178,19 +182,19 @@ se obtiene:
 
 $$I(s)=\frac{sE_i(s)}{Ls^2+Rs+\frac{1}{C}}$$
 
-Por lo tanto, la función de transferencia entre la entrada $E_i(t)$ y la corriente $i(t)$ es:
+Por lo tanto, la función de transferencia entre la entrada $e_i(t)$ y la corriente $i(t)$ es:
 
 $$\frac{I(s)}{E_i(s)}=\frac{s}{Ls^2+Rs+\frac{1}{C}}$$
 
 ---
 
-## 8. Función de Transferencia de Voltaje
+## 8. Voltaje de Salida
 
-Si la salida $E_o(t)$ corresponde al voltaje del capacitor, entonces:
+Si el voltaje de salida $e_o(t)$ corresponde al voltaje del capacitor, entonces:
 
-$$E_o(t)=E_C(t)=\frac{q(t)}{C}$$
+$$e_o(t)=e_C(t)=\frac{q(t)}{C}$$
 
-En el dominio de Laplace:
+Aplicando la transformada de Laplace:
 
 $$E_o(s)=\frac{Q(s)}{C}$$
 
@@ -210,7 +214,7 @@ Por lo tanto, la función de transferencia entre el voltaje de entrada y el volt
 
 $$\boxed{\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}}$$
 
-Esta es la función de transferencia principal del circuito cuando la salida $E_o(t)$ se toma sobre el capacitor.
+Esta es la función de transferencia del circuito cuando la salida $e_o(t)$ se toma sobre el capacitor.
 
 ---
 
@@ -242,7 +246,7 @@ El factor de amortiguamiento relativo es:
 
 $$\zeta=\frac{\alpha}{\omega_n}$$
 
-Sustituyendo los valores simbólicos:
+Por lo tanto:
 
 $$\zeta=\frac{R}{2}\sqrt{\frac{C}{L}}$$
 
@@ -250,11 +254,15 @@ Para un sistema subamortiguado, la frecuencia amortiguada es:
 
 $$\omega_d=\sqrt{\omega_n^2-\alpha^2}$$
 
+También puede expresarse como:
+
+$$\omega_d=\sqrt{\frac{1}{LC}-\frac{R^2}{4L^2}}$$
+
 ---
 
 ## 11. Tipos de Respuesta
 
-El tipo de respuesta depende de los valores de $R$, $L$ y $C$.
+El comportamiento del circuito depende de los valores de $R$, $L$ y $C$.
 
 ### Sistema Subamortiguado
 
@@ -270,9 +278,11 @@ Los polos son complejos conjugados:
 
 $$s_{1,2}=-\alpha\pm j\omega_d$$
 
-La respuesta natural tiene la forma:
+La respuesta natural de la carga tiene la forma:
 
 $$q_n(t)=e^{-\alpha t}[A\cos(\omega_dt)+B\sin(\omega_dt)]$$
+
+La respuesta presenta oscilaciones amortiguadas.
 
 ---
 
@@ -294,6 +304,8 @@ La respuesta natural tiene la forma:
 
 $$q_n(t)=(A+Bt)e^{-\alpha t}$$
 
+El sistema regresa al equilibrio sin presentar oscilaciones.
+
 ---
 
 ### Sistema Sobreamortiguado
@@ -314,19 +326,21 @@ La respuesta natural tiene la forma:
 
 $$q_n(t)=Ae^{s_1t}+Be^{s_2t}$$
 
+El sistema no presenta oscilaciones.
+
 ---
 
-# 12. Respuesta del Sistema para una Entrada Escalón
+# 12. Entrada Escalón
 
-Si la entrada es un escalón de amplitud $E_0$:
+Para una entrada escalón de amplitud $E_0$:
 
-$$E_i(t)=E_0u(t)$$
+$$e_i(t)=E_0u(t)$$
 
 su transformada de Laplace es:
 
 $$E_i(s)=\frac{E_0}{s}$$
 
-Utilizando la función de transferencia de voltaje:
+Utilizando la función de transferencia del voltaje de salida:
 
 $$\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}$$
 
@@ -334,21 +348,15 @@ se obtiene:
 
 $$E_o(s)=\frac{E_0}{s(LCs^2+RCs+1)}$$
 
-La respuesta temporal dependerá del tipo de amortiguamiento determinado por $R$, $L$ y $C$.
+La respuesta temporal dependerá de los valores de $R$, $L$ y $C$.
 
 ---
 
-## 13. Respuesta Temporal General
+## 13. Respuesta Temporal para el Caso Subamortiguado
 
-Para un sistema subamortiguado, la respuesta de la salida puede expresarse como:
+Para condiciones iniciales cero y una entrada escalón, la respuesta del voltaje del capacitor es:
 
-$$E_o(t)=E_0[1-e^{-\alpha t}(A\cos(\omega_dt)+B\sin(\omega_dt))]$$
-
-Los coeficientes $A$ y $B$ dependen de las condiciones iniciales del circuito.
-
-Para condiciones iniciales cero y una entrada escalón, la respuesta normalizada del voltaje del capacitor es:
-
-$$E_o(t)=E_0\left[1-e^{-\alpha t}\left(\cos(\omega_dt)+\frac{\alpha}{\omega_d}\sin(\omega_dt)\right)\right]$$
+$$e_o(t)=E_0\left[1-e^{-\alpha t}\left(\cos(\omega_dt)+\frac{\alpha}{\omega_d}\sin(\omega_dt)\right)\right]$$
 
 donde:
 
@@ -356,25 +364,31 @@ $$\alpha=\frac{R}{2L}$$
 
 y:
 
-$$\omega_d=\sqrt{\frac{1}{LC}-\frac{R^2}{4L^2}}$$
+$$\omega_d=\sqrt{\omega_n^2-\alpha^2}$$
 
-Esta expresión es válida para el caso subamortiguado.
+La carga del capacitor se obtiene mediante:
+
+$$q(t)=Ce_o(t)$$
+
+Por lo tanto:
+
+$$q(t)=CE_0\left[1-e^{-\alpha t}\left(\cos(\omega_dt)+\frac{\alpha}{\omega_d}\sin(\omega_dt)\right)\right]$$
 
 ---
 
 ## 14. Corriente del Circuito
 
-La corriente se relaciona con la carga mediante:
+La corriente está relacionada con la carga mediante:
 
 $$i(t)=\frac{dq(t)}{dt}$$
 
 Como:
 
-$$q(t)=CE_o(t)$$
+$$q(t)=Ce_o(t)$$
 
 entonces:
 
-$$i(t)=C\frac{dE_o(t)}{dt}$$
+$$i(t)=C\frac{de_o(t)}{dt}$$
 
 Para una respuesta subamortiguada con condiciones iniciales cero y entrada escalón:
 
@@ -388,9 +402,31 @@ y:
 
 $$\omega_d=\sqrt{\frac{1}{LC}-\frac{R^2}{4L^2}}$$
 
+La corriente presenta una respuesta oscilatoria amortiguada y tiende a cero cuando:
+
+$$t\rightarrow\infty$$
+
 ---
 
-## 15. Interpretación Física
+## 15. Valor Final
+
+Para una entrada escalón de amplitud $E_0$, el valor final del voltaje del capacitor es:
+
+$$e_o(\infty)=E_0$$
+
+La carga final del capacitor es:
+
+$$q(\infty)=CE_0$$
+
+La corriente final es:
+
+$$i(\infty)=0$$
+
+Esto ocurre porque en estado estacionario de corriente continua el capacitor se comporta como un circuito abierto.
+
+---
+
+## 16. Interpretación Física
 
 El circuito RLC intercambia energía entre el inductor y el capacitor.
 
@@ -412,21 +448,21 @@ Por lo tanto:
 
 ---
 
-# 16. Programa en Python
+# 17. Programa en Python
 
 El programa desarrollado en Python permite realizar automáticamente el análisis matemático del circuito RLC.
 
-El usuario puede introducir los parámetros del circuito:
+El usuario puede introducir:
 
 - Resistencia $R$.
 - Inductancia $L$.
 - Capacitancia $C$.
-- Voltaje de entrada $E_i$.
-- Condición inicial de voltaje del capacitor.
-- Condición inicial de corriente.
+- Voltaje de entrada $e_i(t)$.
+- Voltaje inicial del capacitor.
+- Corriente inicial.
 - Tiempo de simulación.
 
-El programa puede calcular:
+El programa calcula:
 
 1. La ecuación diferencial.
 2. La ecuación característica.
@@ -439,14 +475,16 @@ El programa puede calcular:
 9. El tipo de respuesta.
 10. $Q(s)$.
 11. $I(s)$.
-12. $E_o(s)$.
-13. La solución temporal.
-14. La corriente del circuito.
-15. Las gráficas correspondientes.
+12. $E_i(s)$.
+13. $E_o(s)$.
+14. La solución temporal $e_o(t)$.
+15. La carga $q(t)$.
+16. La corriente $i(t)$.
+17. Las gráficas correspondientes.
 
 ---
 
-# 17. Ejecución
+# 18. Ejecución
 
 Primero instalar las dependencias:
 
@@ -464,7 +502,7 @@ El programa solicitará los parámetros del circuito y mostrará los resultados 
 
 ---
 
-# 18. Tecnologías Utilizadas
+# 19. Tecnologías Utilizadas
 
 - Python
 - NumPy
@@ -473,17 +511,17 @@ El programa solicitará los parámetros del circuito y mostrará los resultados 
 
 ---
 
-# 19. Conclusión
+# 20. Conclusión
 
-El circuito RLC en serie puede modelarse mediante una ecuación diferencial de segundo orden:
+El circuito RLC en serie puede modelarse mediante una ecuación diferencial lineal de segundo orden:
 
-$$L\frac{d^2q(t)}{dt^2}+R\frac{dq(t)}{dt}+\frac{1}{C}q(t)=E_i(t)$$
+$$L\frac{d^2q(t)}{dt^2}+R\frac{dq(t)}{dt}+\frac{1}{C}q(t)=e_i(t)$$
 
 Cuando la salida se toma sobre el capacitor:
 
-$$E_o(t)=\frac{q(t)}{C}$$
+$$e_o(t)=\frac{q(t)}{C}$$
 
-La función de transferencia entre la entrada y la salida es:
+Después de aplicar la transformada de Laplace, la relación entre la entrada y la salida es:
 
 $$\boxed{\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}}$$
 
@@ -503,14 +541,14 @@ y el factor de amortiguamiento relativo es:
 
 $$\zeta=\frac{R}{2}\sqrt{\frac{C}{L}}$$
 
-La clasificación del sistema depende exclusivamente de los valores de $R$, $L$ y $C$.
+La clasificación del sistema depende de los valores de $R$, $L$ y $C$.
 
-Para un sistema subamortiguado:
+Para un sistema subamortiguado y una entrada escalón de amplitud $E_0$, la respuesta del voltaje de salida es:
 
-$$E_o(t)=E_0\left[1-e^{-\alpha t}\left(\cos(\omega_dt)+\frac{\alpha}{\omega_d}\sin(\omega_dt)\right)\right]$$
+$$e_o(t)=E_0\left[1-e^{-\alpha t}\left(\cos(\omega_dt)+\frac{\alpha}{\omega_d}\sin(\omega_dt)\right)\right]$$
 
 y la corriente es:
 
 $$i(t)=\frac{E_0}{L\omega_d}e^{-\alpha t}\sin(\omega_dt)$$
 
-Este modelo permite estudiar el comportamiento dinámico del circuito RLC sin asumir valores numéricos específicos para sus componentes.
+De esta manera, el modelo permite estudiar el comportamiento dinámico del circuito RLC sin asumir valores numéricos específicos para sus componentes.
