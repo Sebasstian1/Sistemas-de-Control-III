@@ -1,7 +1,4 @@
-```matlab
-clc;
-clear;
-close all;
+
 
 %% ============================================================
 %       SISTEMAS DE CONTROL III - CIRCUITO RLC
