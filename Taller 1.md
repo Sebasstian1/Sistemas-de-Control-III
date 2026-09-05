@@ -8,15 +8,39 @@
 
 ---
 
-## Introducción
+# 1. Circuito RLC
+
+A continuación se muestra el circuito RLC en serie utilizado para realizar el análisis.
+
+![Circuito RLC en serie](circuito-rlc.png)
+
+**Figura 1.** Circuito RLC en serie.
 
 Un circuito RLC en serie está formado por una resistencia $R$, una inductancia $L$ y un capacitor $C$ conectados en serie.
 
-Este circuito es un sistema eléctrico de segundo orden y puede utilizarse para estudiar conceptos fundamentales de sistemas de control, como ecuaciones diferenciales, transformada de Laplace, función de transferencia, polos, amortiguamiento y respuesta temporal.
+El voltaje de entrada se representa mediante $e_i(t)$ y el voltaje de salida $e_o(t)$ corresponde al voltaje medido en el capacitor.
 
-En este documento se obtiene el modelo matemático del circuito utilizando la Ley de Kirchhoff de Voltajes. Posteriormente se aplica la transformada de Laplace para obtener la función de transferencia entre el voltaje de entrada y el voltaje de salida.
+Por lo tanto:
 
-Las variables utilizadas son:
+$$e_o(t)=\frac{q(t)}{C}$$
+
+Debido a que los elementos están conectados en serie, la misma corriente $i(t)$ circula por la resistencia, el inductor y el capacitor.
+
+El objetivo es obtener una relación matemática entre el voltaje de entrada $e_i(t)$ y el voltaje de salida $e_o(t)$.
+
+---
+
+# 2. Introducción
+
+El circuito RLC en serie es un sistema eléctrico de segundo orden que permite estudiar diferentes conceptos relacionados con los sistemas de control.
+
+Su comportamiento puede describirse mediante una ecuación diferencial y posteriormente analizarse utilizando la transformada de Laplace.
+
+A través de este análisis es posible obtener la función de transferencia del sistema, determinar sus polos, calcular la frecuencia natural, identificar el factor de amortiguamiento y determinar el tipo de respuesta del circuito.
+
+En este documento se desarrolla el modelo matemático del circuito a partir de las ecuaciones de cada componente y de la Ley de Kirchhoff de Voltajes.
+
+Las principales variables utilizadas son:
 
 - $e_i(t)$: voltaje de entrada.
 - $e_o(t)$: voltaje de salida.
@@ -32,33 +56,9 @@ Las variables utilizadas son:
 
 ---
 
-# 1. Circuito RLC
+# 3. Elementos del Circuito
 
-A continuación se muestra el circuito RLC en serie utilizado para realizar el análisis.
-
-![Circuito RLC en serie](circuito-rlc.png)
-
-**Figura 1.** Circuito RLC en serie.
-
-El circuito está compuesto por una resistencia $R$, un inductor $L$ y un capacitor $C$ conectados en serie.
-
-El voltaje de entrada se representa mediante $e_i(t)$.
-
-El voltaje de salida $e_o(t)$ corresponde al voltaje medido en el capacitor.
-
-Por lo tanto:
-
-$$e_o(t)=\frac{q(t)}{C}$$
-
-Debido a que los elementos están conectados en serie, la misma corriente $i(t)$ circula por la resistencia, el inductor y el capacitor.
-
-El objetivo es obtener una relación matemática entre el voltaje de entrada $e_i(t)$ y el voltaje de salida $e_o(t)$.
-
----
-
-# 2. Elementos del Circuito
-
-## 2.1 Resistencia
+## 3.1 Resistencia
 
 La resistencia es el elemento que se opone al paso de la corriente eléctrica y disipa energía en forma de calor.
 
@@ -72,7 +72,7 @@ Un aumento en el valor de $R$ produce un mayor amortiguamiento y reduce la tende
 
 ---
 
-## 2.2 Inductor
+## 3.2 Inductor
 
 El inductor almacena energía en forma de campo magnético.
 
@@ -86,7 +86,7 @@ El inductor introduce una relación entre el voltaje y la variación de la corri
 
 ---
 
-## 2.3 Capacitor
+## 3.3 Capacitor
 
 El capacitor almacena energía en forma de campo eléctrico.
 
@@ -112,7 +112,7 @@ Esta relación será utilizada para obtener la ecuación diferencial del sistema
 
 ---
 
-# 3. Ley de Kirchhoff de Voltajes
+# 4. Ley de Kirchhoff de Voltajes
 
 Para obtener el modelo matemático se utiliza la Ley de Kirchhoff de Voltajes.
 
@@ -132,7 +132,7 @@ Esta expresión representa la suma de los voltajes presentes en los tres element
 
 ---
 
-# 4. Obtención de la Ecuación Diferencial
+# 5. Obtención de la Ecuación Diferencial
 
 Sabemos que la corriente del capacitor es:
 
@@ -164,7 +164,7 @@ Es una ecuación diferencial lineal de segundo orden debido a que contiene la se
 
 ---
 
-# 5. Ecuación Diferencial Normalizada
+# 6. Ecuación Diferencial Normalizada
 
 La ecuación diferencial obtenida es:
 
@@ -178,7 +178,7 @@ Esta forma permite comparar el circuito con la forma estándar de un sistema de 
 
 ---
 
-# 6. Condiciones Iniciales
+# 7. Condiciones Iniciales
 
 Para resolver completamente la ecuación diferencial es necesario conocer las condiciones iniciales.
 
@@ -202,7 +202,7 @@ Por lo tanto:
 
 $$e_o'(0)=\frac{i_0}{C}$$
 
-Para obtener la función de transferencia normalmente se consideran condiciones iniciales cero:
+Para obtener la función de transferencia se consideran normalmente condiciones iniciales cero:
 
 $$e_o(0)=0$$
 
@@ -210,7 +210,7 @@ $$i(0)=0$$
 
 ---
 
-# 7. Transformada de Laplace
+# 8. Transformada de Laplace
 
 La transformada de Laplace permite convertir una ecuación diferencial del dominio del tiempo en una ecuación algebraica en el dominio de la variable $s$.
 
@@ -220,11 +220,13 @@ $$LC\frac{d^2e_o(t)}{dt^2}+RC\frac{de_o(t)}{dt}+e_o(t)=e_i(t)$$
 
 Para realizar la transformación se utilizan las siguientes relaciones:
 
-$$L\{e_o(t)\}=E_o(s)$$
-
 $$L\{\frac{de_o(t)}{dt}\}=sE_o(s)-e_o(0)$$
 
 $$L\{\frac{d^2e_o(t)}{dt^2}\}=s^2E_o(s)-se_o(0)-e_o'(0)$$
+
+Para el voltaje de salida:
+
+$$L\{e_o(t)\}=E_o(s)$$
 
 Para el voltaje de entrada:
 
@@ -234,7 +236,7 @@ Estas relaciones permiten transformar cada término de la ecuación diferencial 
 
 ---
 
-# 8. Aplicación de la Transformada de Laplace
+# 9. Aplicación de la Transformada de Laplace
 
 Aplicando la transformada de Laplace a la ecuación diferencial:
 
@@ -256,7 +258,7 @@ Esta expresión representa el sistema considerando condiciones iniciales general
 
 ---
 
-# 9. Condiciones Iniciales Cero
+# 10. Condiciones Iniciales Cero
 
 Para obtener la función de transferencia se consideran condiciones iniciales cero:
 
@@ -280,7 +282,7 @@ Esta función representa la relación entre el voltaje de salida y el voltaje de
 
 ---
 
-# 10. Forma Normalizada de la Función de Transferencia
+# 11. Forma Normalizada de la Función de Transferencia
 
 La función de transferencia es:
 
@@ -312,7 +314,7 @@ $$\zeta=\frac{R}{2}\sqrt{\frac{C}{L}}$$
 
 ---
 
-# 11. Ecuación Característica
+# 12. Ecuación Característica
 
 La ecuación característica se obtiene a partir del denominador de la función de transferencia:
 
@@ -328,7 +330,7 @@ Los polos permiten determinar el comportamiento dinámico del circuito.
 
 ---
 
-# 12. Parámetros del Sistema
+# 13. Parámetros del Sistema
 
 La frecuencia natural no amortiguada es:
 
@@ -352,7 +354,7 @@ $$\omega_d=\sqrt{\omega_n^2-\alpha^2}$$
 
 ---
 
-# 13. Tipos de Respuesta
+# 14. Tipos de Respuesta
 
 El comportamiento del circuito depende de la relación entre $\alpha$ y $\omega_n$.
 
@@ -422,7 +424,7 @@ El sistema no presenta oscilaciones.
 
 ---
 
-# 14. Entrada Escalón
+# 15. Entrada Escalón
 
 Para analizar la respuesta del circuito ante una entrada escalón se utiliza:
 
@@ -444,7 +446,7 @@ La respuesta temporal dependerá de los valores de $R$, $L$ y $C$.
 
 ---
 
-# 15. Respuesta Temporal del Sistema Subamortiguado
+# 16. Respuesta Temporal del Sistema Subamortiguado
 
 Para un sistema subamortiguado con condiciones iniciales cero y una entrada escalón, la respuesta del voltaje de salida es:
 
@@ -466,7 +468,7 @@ Los términos $\cos(\omega_dt)$ y $\sin(\omega_dt)$ representan el comportamient
 
 ---
 
-# 16. Corriente del Circuito
+# 17. Corriente del Circuito
 
 La corriente está relacionada con el voltaje de salida mediante:
 
@@ -486,7 +488,7 @@ Esto ocurre porque, en estado estacionario de corriente continua, el capacitor s
 
 ---
 
-# 17. Valor Final
+# 18. Valor Final
 
 Para una entrada escalón de amplitud $E_0$, el voltaje de salida alcanza finalmente:
 
@@ -508,7 +510,7 @@ Esto demuestra que el capacitor termina cargándose hasta alcanzar el voltaje de
 
 ---
 
-# 18. Interpretación Física
+# 19. Interpretación Física
 
 El comportamiento del circuito RLC se debe al intercambio de energía entre el inductor y el capacitor.
 
@@ -529,7 +531,7 @@ Por lo tanto, cada componente tiene una función específica:
 
 ---
 
-# 19. Resumen del Modelo Matemático
+# 20. Resumen del Modelo Matemático
 
 La ecuación diferencial del sistema es:
 
@@ -565,22 +567,88 @@ $$\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}$$
 
 ---
 
-# 20. Conclusiones
+# 21. Solución de Otro Ejercicio
+
+En esta sección se agregará posteriormente la solución de otro ejercicio relacionado con circuitos RLC y sistemas de control.
+
+## Enunciado del Ejercicio
+
+![Circuito del ejercicio](ejercicio2.png)
+
+**Figura 2.** Circuito correspondiente al ejercicio adicional.
+
+Aquí se colocará posteriormente el enunciado y desarrollo del ejercicio.
+
+---
+
+# 22. Conclusiones
 
 El análisis del circuito RLC en serie permitió obtener un modelo matemático que describe la relación entre el voltaje de entrada $e_i(t)$ y el voltaje de salida $e_o(t)$.
 
-A partir de las ecuaciones de la resistencia, el inductor y el capacitor, junto con la Ley de Kirchhoff de Voltajes, se obtuvo una ecuación diferencial de segundo orden:
+A partir de las ecuaciones de la resistencia, el inductor y el capacitor, junto con la Ley de Kirchhoff de Voltajes, se obtuvo una ecuación diferencial lineal de segundo orden:
 
 $$LC\frac{d^2e_o(t)}{dt^2}+RC\frac{de_o(t)}{dt}+e_o(t)=e_i(t)$$
 
-Posteriormente, mediante la transformada de Laplace, la ecuación diferencial se convirtió en una ecuación algebraica en el dominio de $s$. Considerando condiciones iniciales cero, se obtuvo la función de transferencia:
+Posteriormente, mediante la transformada de Laplace, la ecuación diferencial se convirtió en una ecuación algebraica en el dominio de la variable $s$.
+
+Considerando condiciones iniciales cero, se obtuvo la función de transferencia:
 
 $$\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}$$
 
-La función de transferencia permite analizar el comportamiento del circuito y determinar sus polos y características dinámicas.
+La función de transferencia permite analizar el comportamiento dinámico del circuito y determinar sus polos y características principales.
 
-Los parámetros $\omega_n$, $\alpha$ y $\zeta$ permiten identificar el tipo de respuesta del sistema y determinar si el circuito es subamortiguado, críticamente amortiguado o sobreamortiguado.
+Los parámetros $\omega_n$, $\alpha$ y $\zeta$ permiten determinar el tipo de respuesta del sistema y establecer si el circuito es subamortiguado, críticamente amortiguado o sobreamortiguado.
 
 El análisis también permite comprender la función de cada componente. La resistencia disipa energía, el inductor almacena energía magnética y el capacitor almacena energía eléctrica y proporciona el voltaje de salida.
 
-En conclusión, el circuito RLC en serie constituye un ejemplo práctico de un sistema dinámico de segundo orden y permite aplicar conceptos fundamentales de sistemas de control como ecuaciones diferenciales, transformada de Laplace, función de transferencia, polos y análisis de estabilidad.
+En conclusión, el circuito RLC en serie constituye un ejemplo práctico de un sistema dinámico de segundo orden y permite aplicar conceptos fundamentales de sistemas de control, como ecuaciones diferenciales, transformada de Laplace, función de transferencia, polos y análisis de estabilidad.
+
+---
+
+# 23. Obtención de la Transformada de Laplace
+
+Para obtener la función de transferencia se parte de la ecuación diferencial del circuito:
+
+$$LC\frac{d^2e_o(t)}{dt^2}+RC\frac{de_o(t)}{dt}+e_o(t)=e_i(t)$$
+
+La transformada de Laplace permite convertir esta ecuación del dominio del tiempo al dominio de la variable $s$.
+
+Para la primera derivada se utiliza:
+
+$$L\{\frac{de_o(t)}{dt}\}=sE_o(s)-e_o(0)$$
+
+Para la segunda derivada se utiliza:
+
+$$L\{\frac{d^2e_o(t)}{dt^2}\}=s^2E_o(s)-se_o(0)-e_o'(0)$$
+
+Para el voltaje de salida:
+
+$$L\{e_o(t)\}=E_o(s)$$
+
+Para el voltaje de entrada:
+
+$$L\{e_i(t)\}=E_i(s)$$
+
+Aplicando estas relaciones a la ecuación diferencial:
+
+$$LC[s^2E_o(s)-se_o(0)-e_o'(0)]+RC[sE_o(s)-e_o(0)]+E_o(s)=E_i(s)$$
+
+Considerando condiciones iniciales cero:
+
+$$e_o(0)=0$$
+
+$$e_o'(0)=0$$
+
+La ecuación queda:
+
+$$LCs^2E_o(s)+RCsE_o(s)+E_o(s)=E_i(s)$$
+
+Factorizando $E_o(s)$:
+
+$$E_o(s)[LCs^2+RCs+1]=E_i(s)$$
+
+Finalmente, despejando la relación entre la salida y la entrada:
+
+$$\frac{E_o(s)}{E_i(s)}=\frac{1}{LCs^2+RCs+1}$$
+
+Esta expresión corresponde a la función de transferencia del circuito RLC en serie.
