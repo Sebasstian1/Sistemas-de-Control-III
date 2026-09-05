@@ -1,9 +1,13 @@
+# Sistemas de Control
+
 # Circuito RLC en Serie
 
-Este documento presenta el análisis de un circuito RLC en serie mediante
-ecuaciones diferenciales y la transformada de Laplace. Se incluye la
-obtención del modelo matemático a partir de la Ley de Kirchhoff, el análisis
-de las condiciones iniciales y la solución del sistema.
+Este proyecto presenta el análisis matemático de un circuito RLC en serie
+mediante ecuaciones diferenciales y la transformada de Laplace.
+
+El objetivo es obtener el modelo matemático del sistema, analizar sus polos,
+determinar el tipo de amortiguamiento y obtener la respuesta temporal de la
+carga del capacitor y de la corriente.
 
 ---
 
@@ -17,55 +21,52 @@ Un circuito RLC en serie está compuesto por:
 - Una fuente de voltaje $V(t)$.
 
 Los tres elementos se encuentran conectados en serie, por lo que la misma
-corriente $i(t)$ circula por todos ellos.
+corriente $i(t)$ circula por todos los elementos.
 
-El circuito puede utilizarse para estudiar sistemas eléctricos de segundo
-orden y presenta un comportamiento análogo a otros sistemas físicos como
-el sistema masa-resorte-amortiguador.
+El circuito RLC constituye un sistema dinámico de segundo orden y es utilizado
+como modelo en el estudio de Sistemas de Control.
 
 ---
 
 ## 2. Ley de Kirchhoff
 
-Aplicando la Ley de Kirchhoff de Voltajes al circuito:
+Aplicando la Ley de Kirchhoff de Voltajes:
 
 $$
-V(t) = V_R(t) + V_L(t) + V_C(t)
+V(t)=V_R(t)+V_L(t)+V_C(t)
 $$
 
-Los voltajes de cada elemento son:
+Para cada elemento:
 
 ### Resistencia
 
 $$
-V_R(t) = R i(t)
+V_R(t)=Ri(t)
 $$
 
 ### Inductor
 
 $$
-V_L(t) = L\frac{di(t)}{dt}
+V_L(t)=L\frac{di(t)}{dt}
 $$
 
 ### Capacitor
 
-Para el capacitor se cumple:
-
 $$
-V_C(t) = \frac{q(t)}{C}
+V_C(t)=\frac{q(t)}{C}
 $$
 
-Como la corriente es la derivada de la carga:
+Además:
 
 $$
-i(t) = \frac{dq(t)}{dt}
+i(t)=\frac{dq(t)}{dt}
 $$
 
 ---
 
-## 3. Ecuación Diferencial en función de la carga
+## 3. Ecuación Diferencial
 
-Sustituyendo las expresiones anteriores en la Ley de Kirchhoff:
+Sustituyendo las expresiones anteriores:
 
 $$
 V(t)
@@ -91,12 +92,12 @@ V(t)
 }
 $$
 
-Esta es la ecuación diferencial de segundo orden que describe el
-comportamiento del circuito RLC en serie.
+Esta es la ecuación diferencial que describe el circuito RLC en términos de
+la carga del capacitor.
 
 ---
 
-## 4. Ecuación Diferencial en función de la corriente
+## 4. Ecuación en función de la corriente
 
 Como:
 
@@ -104,7 +105,7 @@ $$
 i(t)=\frac{dq(t)}{dt}
 $$
 
-derivamos la ecuación anterior:
+se puede derivar la ecuación anterior:
 
 $$
 \frac{dV(t)}{dt}
@@ -130,28 +131,20 @@ R\frac{di(t)}{dt}
 }
 $$
 
-Esta es la ecuación diferencial cuando se utiliza la corriente $i(t)$ como
-variable de salida.
+Esta expresión es importante porque muestra que, cuando se utiliza la
+corriente como variable, aparece la derivada de la fuente de voltaje.
 
 ---
 
 ## 5. Transformada de Laplace
 
-Partimos de la ecuación en términos de la carga:
+Partimos de:
 
 $$
 Lq''(t)+Rq'(t)+\frac{1}{C}q(t)=V(t)
 $$
 
-Aplicando la transformada de Laplace:
-
-$$
-\mathcal{L}\{q''(t)\}
-=
-s^2Q(s)-sq(0)-q'(0)
-$$
-
-y:
+Utilizando las propiedades de la transformada de Laplace:
 
 $$
 \mathcal{L}\{q'(t)\}
@@ -159,7 +152,15 @@ $$
 sQ(s)-q(0)
 $$
 
-Por lo tanto:
+y:
+
+$$
+\mathcal{L}\{q''(t)\}
+=
+s^2Q(s)-sq(0)-q'(0)
+$$
+
+Aplicando Laplace:
 
 $$
 L[s^2Q(s)-sq(0)-q'(0)]
@@ -171,7 +172,7 @@ R[sQ(s)-q(0)]
 V(s)
 $$
 
-Agrupando los términos que contienen $Q(s)$:
+Agrupando:
 
 $$
 Q(s)
@@ -181,20 +182,20 @@ Ls^2+Rs+\frac{1}{C}
 =
 V(s)
 +
-Ls q(0)
+Lsq(0)
 +
 Lq'(0)
 +
 Rq(0)
 $$
 
-Finalmente:
+Por lo tanto:
 
 $$
 \boxed{
 Q(s)=
 \frac{
-V(s)+Ls q(0)+Lq'(0)+Rq(0)
+V(s)+Lsq(0)+Lq'(0)+Rq(0)
 }{
 Ls^2+Rs+\frac{1}{C}
 }
@@ -205,7 +206,7 @@ $$
 
 ## 6. Condiciones Iniciales Cero
 
-Para condiciones iniciales:
+Si:
 
 $$
 q(0)=0
@@ -217,7 +218,7 @@ $$
 i(0)=q'(0)=0
 $$
 
-la expresión anterior se simplifica a:
+entonces:
 
 $$
 \boxed{
@@ -243,18 +244,7 @@ I(s)=
 }
 $$
 
-También puede escribirse la función de transferencia corriente/voltaje como:
-
-$$
-\boxed{
-\frac{I(s)}{V(s)}
-=
-\frac{1}
-{Ls+R+\frac{1}{Cs}}
-}
-$$
-
-o equivalentemente:
+Por lo tanto, la función de transferencia corriente/voltaje es:
 
 $$
 \boxed{
@@ -269,7 +259,7 @@ $$
 
 ## 7. Entrada Escalón
 
-Si la fuente de voltaje es un escalón:
+Para una fuente de voltaje escalón:
 
 $$
 V(t)=V_0u(t)
@@ -281,15 +271,21 @@ $$
 V(s)=\frac{V_0}{s}
 $$
 
-Por lo tanto:
+Entonces:
 
 $$
-Q(s)=
+Q(s)
+=
 \frac{V_0}
-{s\left(Ls^2+Rs+\frac{1}{C}\right)}
+{
+s
+\left(
+Ls^2+Rs+\frac{1}{C}
+\right)
+}
 $$
 
-y para la corriente:
+y:
 
 $$
 I(s)=sQ(s)
@@ -307,7 +303,7 @@ $$
 
 ---
 
-## 8. Forma Normalizada
+## 8. Parámetros del Sistema
 
 Dividiendo la ecuación diferencial entre $L$:
 
@@ -321,25 +317,7 @@ q''(t)
 \frac{V(t)}{L}
 $$
 
-La ecuación característica correspondiente al sistema homogéneo es:
-
-$$
-Ls^2+Rs+\frac{1}{C}=0
-$$
-
-o:
-
-$$
-s^2+
-\frac{R}{L}s+
-\frac{1}{LC}=0
-$$
-
----
-
-## 9. Parámetros del Sistema
-
-La frecuencia natural no amortiguada es:
+La frecuencia natural es:
 
 $$
 \boxed{
@@ -355,21 +333,23 @@ $$
 }
 $$
 
-La frecuencia amortiguada, cuando el sistema es subamortiguado, es:
+La ecuación característica es:
 
 $$
-\boxed{
-\omega_d=
-\sqrt{\omega_n^2-\alpha^2}
-}
+Ls^2+Rs+\frac{1}{C}=0
+$$
+
+o:
+
+$$
+s^2+\frac{R}{L}s+\frac{1}{LC}=0
 $$
 
 ---
 
-## 10. Tipos de Respuesta
+## 9. Tipos de Respuesta
 
-El comportamiento del circuito depende de la relación entre $\alpha$ y
-$\omega_n$.
+El tipo de respuesta depende de la relación entre $\alpha$ y $\omega_n$.
 
 ### Sistema Subamortiguado
 
@@ -379,21 +359,29 @@ $$
 \alpha<\omega_n
 $$
 
-entonces:
+el sistema presenta oscilaciones amortiguadas.
+
+La frecuencia amortiguada es:
 
 $$
-R<2\sqrt{\frac{L}{C}}
+\boxed{
+\omega_d=
+\sqrt{\omega_n^2-\alpha^2}
+}
 $$
 
-El circuito presenta oscilaciones amortiguadas.
-
-La respuesta contiene términos de la forma:
+La respuesta tiene la forma:
 
 $$
+q(t)
+=
+q_f+
 e^{-\alpha t}
-\left[
-A\cos(\omega_dt)+B\sin(\omega_dt)
-\right]
+[
+A\cos(\omega_dt)
++
+B\sin(\omega_dt)
+]
 $$
 
 ---
@@ -406,17 +394,14 @@ $$
 \alpha=\omega_n
 $$
 
-entonces:
-
-$$
-R=2\sqrt{\frac{L}{C}}
-$$
-
-El sistema retorna a su estado de equilibrio sin presentar oscilaciones.
+el sistema alcanza el equilibrio sin oscilaciones.
 
 La respuesta tiene la forma:
 
 $$
+q(t)
+=
+q_f+
 (A+Bt)e^{-\alpha t}
 $$
 
@@ -430,21 +415,7 @@ $$
 \alpha>\omega_n
 $$
 
-entonces:
-
-$$
-R>2\sqrt{\frac{L}{C}}
-$$
-
-El sistema no presenta oscilaciones y posee dos polos reales diferentes.
-
-La respuesta tiene la forma:
-
-$$
-Ae^{s_1t}+Be^{s_2t}
-$$
-
-donde:
+el sistema presenta dos polos reales diferentes:
 
 $$
 s_{1,2}
@@ -454,11 +425,22 @@ s_{1,2}
 \sqrt{\alpha^2-\omega_n^2}
 $$
 
+La respuesta tiene la forma:
+
+$$
+q(t)
+=
+q_f+
+Ae^{s_1t}
++
+Be^{s_2t}
+$$
+
 ---
 
-## 11. Solución para un Ejemplo
+## 10. Ejemplo Numérico
 
-Consideremos los valores:
+Se consideran los siguientes valores:
 
 $$
 R=10\ \Omega
@@ -472,13 +454,25 @@ $$
 C=0.01\ F
 $$
 
-y una fuente:
-
 $$
-V(t)=12u(t)
+V_0=12\ V
 $$
 
-La ecuación diferencial es:
+con condiciones iniciales:
+
+$$
+q(0)=0
+$$
+
+$$
+i(0)=0
+$$
+
+---
+
+## 11. Ecuación Diferencial del Ejemplo
+
+Sustituyendo los valores:
 
 $$
 0.5q''(t)+10q'(t)+100q(t)=12
@@ -492,16 +486,25 @@ q''(t)+20q'(t)+200q(t)=24
 }
 $$
 
-Los parámetros son:
+---
+
+## 12. Análisis del Sistema
+
+El factor de amortiguamiento es:
 
 $$
-\alpha=\frac{10}{2(0.5)}=10
+\alpha
+=
+\frac{10}{2(0.5)}
+=
+10
 $$
 
-y:
+La frecuencia natural es:
 
 $$
-\omega_n=
+\omega_n
+=
 \frac{1}{\sqrt{(0.5)(0.01)}}
 =
 14.142
@@ -510,45 +513,52 @@ $$
 Como:
 
 $$
-\alpha<\omega_n
+10<14.142
 $$
 
 el sistema es:
 
 $$
-\boxed{\text{SUBAMORTIGUADO}}
+\boxed{
+\text{SUBAMORTIGUADO}
+}
 $$
 
 La frecuencia amortiguada es:
 
 $$
-\omega_d=
+\omega_d
+=
 \sqrt{14.142^2-10^2}
 $$
 
 por lo tanto:
 
 $$
-\omega_d\approx10
+\boxed{
+\omega_d=10\ rad/s
+}
 $$
 
 ---
 
-## 12. Transformada de Laplace del Ejemplo
+## 13. Transformada de Laplace del Ejemplo
 
-Con condiciones iniciales cero:
+Para condiciones iniciales cero:
 
 $$
-Q(s)=
+Q(s)
+=
 \frac{12/s}
 {0.5s^2+10s+100}
 $$
 
-Multiplicando numerador y denominador:
+Simplificando:
 
 $$
 \boxed{
-Q(s)=
+Q(s)
+=
 \frac{24}
 {s(s^2+20s+200)}
 }
@@ -564,7 +574,8 @@ por lo tanto:
 
 $$
 \boxed{
-I(s)=
+I(s)
+=
 \frac{24}
 {s^2+20s+200}
 }
@@ -572,7 +583,7 @@ $$
 
 ---
 
-## 13. Solución Temporal del Ejemplo
+## 14. Polos del Sistema
 
 La ecuación característica es:
 
@@ -580,7 +591,7 @@ $$
 s^2+20s+200=0
 $$
 
-Sus raíces son:
+Las raíces son:
 
 $$
 s_1=-10+10j
@@ -590,34 +601,29 @@ $$
 s_2=-10-10j
 $$
 
-Por lo tanto, la respuesta natural tiene la forma:
+Los polos tienen parte real negativa, por lo que el sistema es estable.
+
+---
+
+## 15. Solución Temporal
+
+La carga final del capacitor es:
 
 $$
-q_n(t)
-=
-e^{-10t}
-[
-A\cos(10t)+B\sin(10t)
-]
+q_f=CV_0
 $$
 
-La respuesta final del capacitor es:
+Por lo tanto:
 
 $$
-q(\infty)=CV_0
+q_f=(0.01)(12)
 $$
 
-por lo tanto:
-
 $$
-q(\infty)
-=
-(0.01)(12)
-=
-0.12\ C
+q_f=0.12\ C
 $$
 
-Con condiciones iniciales cero, la solución es:
+La solución es:
 
 $$
 \boxed{
@@ -631,53 +637,60 @@ q(t)
 }
 $$
 
-La corriente es:
+La corriente se obtiene mediante:
 
 $$
 i(t)=\frac{dq(t)}{dt}
 $$
 
-y resulta:
+por lo tanto:
 
 $$
 \boxed{
 i(t)=
-0.24e^{-10t}\sin(10t)
+2.4e^{-10t}\sin(10t)
 }
 $$
 
 ---
 
-## 14. Programa
+## 16. Programa
 
-El repositorio contiene un programa en Python llamado `rlc.py`.
+El archivo `rlc.py` automatiza el procedimiento matemático.
 
-El programa permite introducir los valores:
+El usuario puede introducir:
 
 - Resistencia $R$.
 - Inductancia $L$.
 - Capacitancia $C$.
-- Voltaje $V_0$.
+- Voltaje de la fuente.
 - Voltaje inicial del capacitor.
 - Corriente inicial.
 - Tiempo de simulación.
 
-Además, calcula automáticamente:
+El programa calcula:
 
 1. La ecuación diferencial.
-2. Los parámetros $\alpha$ y $\omega_n$.
-3. El tipo de amortiguamiento.
-4. La transformada de Laplace.
-5. $Q(s)$.
-6. $I(s)$.
-7. La solución temporal.
-8. La gráfica de carga y corriente.
+2. La ecuación normalizada.
+3. La transformada de Laplace.
+4. $Q(s)$.
+5. $I(s)$.
+6. $\alpha$.
+7. $\omega_n$.
+8. $\omega_d$, cuando corresponde.
+9. Los polos del sistema.
+10. El tipo de amortiguamiento.
+11. La solución analítica.
+12. La gráfica de $q(t)$.
+13. La gráfica de $i(t)$.
 
 ---
 
-## 15. Ejecución del Programa
+## 17. Instalación
 
-Para instalar las librerías necesarias:
+Se necesita Python 3.
+
+Instalar las dependencias:
 
 ```bash
 pip install -r requirements.txt
