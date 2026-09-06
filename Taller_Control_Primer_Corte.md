@@ -2,9 +2,9 @@
 
 ## Integrantes
 
-- Nombre del integrante 1
-- Nombre del integrante 2
-- Nombre del integrante 3
+- PAULA NATHALIA MARTINEZ CRISTIANO
+- JHOHANN DEYWY PEÑA PEÑA
+- SEBASTIAN HERNANDEZ FONTECHA
 
 ---
 
