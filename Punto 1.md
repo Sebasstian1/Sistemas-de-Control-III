@@ -1,7 +1,6 @@
 # Análisis de un Circuito RLC en Serie
 
 
-
 # 1. Circuito RLC en Serie
 
 A continuación se muestra el circuito RLC en serie utilizado para realizar el análisis.
