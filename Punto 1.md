@@ -1,12 +1,6 @@
 # Análisis de un Circuito RLC en Serie
 
-## Integrantes
 
-- Nombre del integrante 1
-- Nombre del integrante 2
-- Nombre del integrante 3
-
----
 
 # 1. Circuito RLC en Serie
 
